@@ -1,6 +1,7 @@
 package db
 
 import (
+	"atomic-bank/util"
 	"database/sql"
 	"log"
 	"os"
@@ -9,18 +10,16 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	DBDRIVER = "postgres"
-	DBSOURCE = "postgresql://root:secret@localhost:5432/bank?sslmode=disable"
-)
-
 var TestQueries *Queries
 var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	var err error
+	config, err := util.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("cannot load config:", err)
+	}
 
-	testDB, err = sql.Open(DBDRIVER, DBSOURCE)
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
