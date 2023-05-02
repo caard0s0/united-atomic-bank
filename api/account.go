@@ -126,7 +126,7 @@ func (server *Server) deleteAccount(ctx *gin.Context) {
 		return
 	}
 
-	err := server.store.DeleteAccount(ctx, req.ID)
+	account, err := server.store.GetAccount(ctx, req.ID)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
@@ -136,5 +136,10 @@ func (server *Server) deleteAccount(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusNoContent, http.NoBody)
+	err = server.store.DeleteAccount(ctx, req.ID)
+	if err != nil {
+		return
+	}
+
+	ctx.JSON(http.StatusOK, account)
 }
