@@ -4,8 +4,11 @@
 </a>
 
 <div align="center">
-    <img width="600" src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
+    <img style="border-radius:10px" width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank</h2>
 </div>
 
+<div align="center">
+    <img width="500" src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
+</div>
 
