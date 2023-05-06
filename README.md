@@ -6,11 +6,12 @@
 &nbsp;
 
 <div align="center">
-    <img style="border-radius:10px" width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
-    <h1>Atomic Bank - API Server</h1>
+    <img style="border-radius:10px;" width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
+    <h2>Atomic Bank - API Server</h2>
 </div>
+
+&nbsp;
 
 <div align="center">
     <img width="500" src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
 </div>
-
