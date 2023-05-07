@@ -8,13 +8,14 @@
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank - API Server</h2>
-    <p>A Banking System that provides APIs for the Front End with some Financial Services</p>
+    <p>A Banking System that provides APIs for the Front End with Financial Services</p>
+    <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bug</a>
 </div>
 
 &nbsp;
 
 <div align="center">
-    <img width="500" src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
+    <img src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
 </div>
 
 &nbsp;
