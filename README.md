@@ -6,7 +6,7 @@
 &nbsp;
 
 <div align="center">
-    <img style="border-radius:10px;" width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
+    <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank - API Server</h2>
 </div>
 
@@ -15,3 +15,11 @@
 <div align="center">
     <img width="500" src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
 </div>
+
+&nbsp;
+
+<h3>
+    Built With
+</h3>
+
+[![Tools](https://skillicons.dev/icons?i=linux,go,postgres,docker)](https://skillicons.dev)
