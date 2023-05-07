@@ -8,6 +8,7 @@
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank - API Server</h2>
+    <p>A Banking System that provides APIs for the Front End with some Financial Services</p>
 </div>
 
 &nbsp;
