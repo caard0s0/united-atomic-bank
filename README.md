@@ -9,7 +9,9 @@
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank - API Server</h2>
     <p>A Banking System that provides APIs for the Front End with Financial Services</p>
-    <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bug</a>
+    <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
+    &nbsp;&bull;&nbsp;
+    <a href="https://github.com/caard0s0/atomic-bank/pulls">Pull Requests</a>
 </div>
 
 &nbsp;
