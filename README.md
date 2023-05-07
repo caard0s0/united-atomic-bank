@@ -22,4 +22,4 @@
     Built With
 </h3>
 
-[![Tools](https://skillicons.dev/icons?i=linux,go,postgres,docker)](https://skillicons.dev)
+[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions)](https://skillicons.dev)
