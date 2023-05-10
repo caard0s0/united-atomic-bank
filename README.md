@@ -12,6 +12,8 @@
     <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
     <a href="https://github.com/caard0s0/atomic-bank/pulls">Pull Requests</a>
+    &nbsp;&bull;&nbsp;
+    <a href="https://github.com/caard0s0/atomic-bank/actions">Actions</a>
 </div>
 
 &nbsp;
