@@ -11,9 +11,9 @@
     <p>A Banking System that provides APIs for the Front End with Financial Services</p>
     <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/atomic-bank/pulls">Pull Requests</a>
-    &nbsp;&bull;&nbsp;
     <a href="https://github.com/caard0s0/atomic-bank/actions">Actions</a>
+    &nbsp;&bull;&nbsp;
+    <a href="https://github.com/caard0s0/atomic-bank/pulls">Pull Requests</a>
 </div>
 
 &nbsp;
@@ -29,3 +29,22 @@
 </h3>
 
 [![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions)](https://skillicons.dev)
+
+&nbsp;
+
+<details>
+  <summary> Table of Contents </summary>
+    <ol>
+        <li>
+            <a>Getting Started</a>
+        </li>
+    </ol>
+</details>
+
+&nbsp;
+
+<h2> Getting Started </h2>
+
+<p align="right">
+    <a href="#"> &uarr; back to top</a>
+</p> 
