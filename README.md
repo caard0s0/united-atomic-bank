@@ -30,8 +30,6 @@
 
 [![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions)](https://skillicons.dev)
 
-&nbsp;
-
 <details>
   <summary> Table of Contents </summary>
     <ol>
@@ -46,5 +44,5 @@
 <h2> Getting Started </h2>
 
 <p align="right">
-    <a href="#"> &uarr; back to top</a>
+    <a href="#top"> &uarr; back to top</a>
 </p> 
