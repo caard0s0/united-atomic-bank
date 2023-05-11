@@ -1,5 +1,6 @@
 <div id="top"></div>
 
+
 <!-- CI Badge -->
 <a href="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml">
     <img src="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
@@ -7,6 +8,8 @@
 
 &nbsp;
 
+
+<!-- About the Project -->
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>Atomic Bank - API Server</h2>
@@ -32,17 +35,21 @@
 
 [![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions)](https://skillicons.dev)
 
+
+<!-- Table of Contents -->
 <details>
   <summary> Table of Contents </summary>
     <ol>
         <li>
-            <a href="#getting-started">Getting Started</a>
+            <a href="#getting-started"> Getting Started </a>
         </li>
     </ol>
 </details>
 
 &nbsp;
 
+
+<!-- Getting Started -->
 <h2 id="getting-started"> Getting Started </h2>
 
 <p align="right">
