@@ -1,3 +1,5 @@
+<div id="top"></div>
+
 <!-- CI Badge -->
 <a href="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml">
     <img src="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
@@ -34,14 +36,14 @@
   <summary> Table of Contents </summary>
     <ol>
         <li>
-            <a>Getting Started</a>
+            <a href="#getting-started">Getting Started</a>
         </li>
     </ol>
 </details>
 
 &nbsp;
 
-<h2> Getting Started </h2>
+<h2 id="getting-started"> Getting Started </h2>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
