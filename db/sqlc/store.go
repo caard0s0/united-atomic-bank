@@ -4,12 +4,14 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"time"
 )
 
 // Store provides all functions to execute db queries and transactions
 type Store interface {
 	Querier
 	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error)
+	TransferLoan(ctx context.Context, arg TransferLoanParams) (TransferLoanResult, error)
 }
 
 // SQLStore provides all functions to execute SQL queries and transactions
@@ -61,6 +63,22 @@ type TransferTxResult struct {
 	ToEntry     Entry    `json:"to_entry"`
 }
 
+// TransferLoanParams contains the input parameters of the transfer loan
+type TransferLoanParams struct {
+	AccountID    int64     `json:"account_id"`
+	LoanAmount   int64     `json:"loan_amount"`
+	InterestRate int64     `json:"interest_rate"`
+	Status       string    `json:"status"`
+	EndDate      time.Time `json:"end_date"`
+}
+
+// TransferTxResult is the result of the transfer loan
+type TransferLoanResult struct {
+	Loan      Loan    `json:"loan"`
+	ToAccount Account `json:"to_account"`
+	ToEntry   Entry   `json:"to_entry"`
+}
+
 // TransferTx performs a money transfer from one account to the other.
 // It creates a transfer record, add account entries, and update accounts' balance within a single database transaction
 func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
@@ -107,7 +125,42 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
 		}
 		return nil
 	})
+	return result, err
+}
 
+// TransferLoan performs a money transfer to an account.
+// It creates a transferLoan record, add account entry, and update account balance within a single database transaction
+func (store *SQLStore) TransferLoan(ctx context.Context, arg TransferLoanParams) (TransferLoanResult, error) {
+	var result TransferLoanResult
+
+	err := store.execTx(ctx, func(q *Queries) error {
+		var err error
+
+		result.Loan, err = q.CreateLoan(ctx, CreateLoanParams{
+			AccountID:    arg.AccountID,
+			LoanAmount:   arg.LoanAmount,
+			InterestRate: arg.InterestRate,
+			Status:       arg.Status,
+			EndDate:      time.Now().UTC().Add(time.Minute),
+		})
+		if err != nil {
+			return err
+		}
+
+		result.ToEntry, err = q.CreateEntry(ctx, CreateEntryParams{
+			AccountID: arg.AccountID,
+			Amount:    arg.LoanAmount,
+		})
+		if err != nil {
+			return err
+		}
+
+		result.ToAccount, err = addLoanMoney(ctx, q, arg.AccountID, arg.LoanAmount)
+		if err != nil {
+			return err
+		}
+		return nil
+	})
 	return result, err
 }
 
@@ -131,5 +184,21 @@ func addMoney(
 		ID:     accountID2,
 		Amount: amount2,
 	})
+	return
+}
+
+func addLoanMoney(
+	ctx context.Context,
+	q *Queries,
+	accountID int64,
+	amount int64,
+) (account Account, err error) {
+	account, err = q.AddAccountBalance(ctx, AddAccountBalanceParams{
+		ID:     accountID,
+		Amount: amount,
+	})
+	if err != nil {
+		return
+	}
 	return
 }
