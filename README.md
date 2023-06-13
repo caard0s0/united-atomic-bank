@@ -13,7 +13,7 @@
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>United Atomic - API Server</h2>
-    <p>A Banking System that provides APIs for the Front End with Financial Services</p>
+    <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Go</a>.</p>
     <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
     <a href="https://github.com/caard0s0/atomic-bank/actions">Actions</a>
@@ -23,26 +23,22 @@
 
 &nbsp;
 
-<div align="center">
-    <img src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
-    <p>United Atomic is a financial institution that specializes in intermediating money between savers and those in need of loans, as well as custody (storing) that money.</p>
-</div>
+<img src="./.github/imgs/atomic-bank-db-diagram.png" alt="United Atomic Bank DB Diagram" />
+United Atomic is a financial institution that specializes in intermediating money between savers and those in need of loans, as well as custody of that money.
 
 &nbsp;
 
-<h3>
-    Built With
-</h3>
+<h3>Built With</h3>
 
 [![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions,postman)](https://skillicons.dev)
 
 
 <!-- Table of Contents -->
 <details>
-  <summary> Table of Contents </summary>
+  <summary>Table of Contents</summary>
     <ol>
         <li>
-            <a href="#getting-started"> Getting Started </a>
+            <a href="#getting-started">Getting Started</a>
         </li>
     </ol>
 </details>
@@ -51,7 +47,7 @@
 
 
 <!-- Getting Started -->
-<h2 id="getting-started"> Getting Started </h2>
+<h2 id="getting-started">Getting Started</h2>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
