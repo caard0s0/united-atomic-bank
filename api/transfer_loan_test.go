@@ -49,7 +49,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(1).
 					Return(account, nil)
 
-				arg := db.TransferLoanParams{
+				arg := db.TransferLoanToAnAccountParams{
 					AccountID:    account.ID,
 					LoanAmount:   loanAmount,
 					InterestRate: interestRate,
@@ -58,7 +58,7 @@ func TestTransferLoanAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Eq(arg)).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Eq(arg)).
 					Times(1)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -81,7 +81,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrNoRows)
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Any()).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -103,7 +103,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Any()).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -125,7 +125,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Any()).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -148,7 +148,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(account, nil)
 
 				store.EXPECT().
-					TransferLoan(gomock.Any, gomock.Any()).
+					TransferLoanToAnAccount(gomock.Any, gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -171,7 +171,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrConnDone)
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Any()).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -179,7 +179,7 @@ func TestTransferLoanAPI(t *testing.T) {
 			},
 		},
 		{
-			name: "TransferLoanError",
+			name: "TransferLoanToAnAccountError",
 			body: gin.H{
 				"account_id":  account.ID,
 				"loan_amount": loanAmount,
@@ -193,7 +193,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(1).
 					Return(account, nil)
 
-				arg := db.TransferLoanParams{
+				arg := db.TransferLoanToAnAccountParams{
 					AccountID:    account.ID,
 					LoanAmount:   loanAmount,
 					InterestRate: interestRate,
@@ -202,9 +202,9 @@ func TestTransferLoanAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferLoan(gomock.Any(), gomock.Eq(arg)).
+					TransferLoanToAnAccount(gomock.Any(), gomock.Eq(arg)).
 					Times(1).
-					Return(db.TransferLoanResult{}, sql.ErrConnDone)
+					Return(db.TransferLoanToAnAccountResult{}, sql.ErrConnDone)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusInternalServerError, recorder.Code)

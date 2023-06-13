@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestTransferTx(t *testing.T) {
+func TestTransferTransactionBetweenAccounts(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
@@ -21,12 +21,12 @@ func TestTransferTx(t *testing.T) {
 	amount := int64(10)
 
 	errs := make(chan error)
-	results := make(chan TransferTxResult)
+	results := make(chan TransferTransactionBetweenAccountsResult)
 
 	for i := 0; i < n; i++ {
 		go func() {
 			ctx := context.Background()
-			result, err := store.TransferTx(ctx, TransferTxParams{
+			result, err := store.TransferTransactionBetweenAccounts(ctx, TransferTransactionBetweenAccountsParams{
 				FromAccountID: account1.ID,
 				ToAccountID:   account2.ID,
 				Amount:        amount,
@@ -115,7 +115,7 @@ func TestTransferTx(t *testing.T) {
 	require.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }
 
-func TestTransferTxDeadLock(t *testing.T) {
+func TestTransferTransactionBetweenAccountsDeadLock(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
@@ -139,7 +139,7 @@ func TestTransferTxDeadLock(t *testing.T) {
 
 		go func() {
 			ctx := context.Background()
-			_, err := store.TransferTx(ctx, TransferTxParams{
+			_, err := store.TransferTransactionBetweenAccounts(ctx, TransferTransactionBetweenAccountsParams{
 				FromAccountID: fromAccountID,
 				ToAccountID:   toAccountID,
 				Amount:        amount,
@@ -167,7 +167,7 @@ func TestTransferTxDeadLock(t *testing.T) {
 	require.Equal(t, account2.Balance, updatedAccount2.Balance)
 }
 
-func TestTransferLoan(t *testing.T) {
+func TestTransferLoanToAnAccount(t *testing.T) {
 	store := NewStore(testDB)
 
 	account := createRandomAccount(t)
@@ -180,12 +180,12 @@ func TestTransferLoan(t *testing.T) {
 	status := "Active"
 
 	errs := make(chan error)
-	results := make(chan TransferLoanResult)
+	results := make(chan TransferLoanToAnAccountResult)
 
 	for i := 0; i < n; i++ {
 		go func() {
 			ctx := context.Background()
-			result, err := store.TransferLoan(ctx, TransferLoanParams{
+			result, err := store.TransferLoanToAnAccount(ctx, TransferLoanToAnAccountParams{
 				AccountID:    account.ID,
 				LoanAmount:   amount,
 				InterestRate: interestRate,
