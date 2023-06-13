@@ -12,7 +12,7 @@
 <!-- About the Project -->
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
-    <h2>Atomic Bank - API Server</h2>
+    <h2>United Atomic - API Server</h2>
     <p>A Banking System that provides APIs for the Front End with Financial Services</p>
     <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
@@ -25,6 +25,7 @@
 
 <div align="center">
     <img src="./.github/imgs/atomic-bank-db-diagram.png" alt="Atomic Bank DB Diagram" />
+    <p>United Atomic is a financial institution that specializes in intermediating money between savers and those in need of loans, as well as custody (storing) that money.</p>
 </div>
 
 &nbsp;
@@ -33,7 +34,7 @@
     Built With
 </h3>
 
-[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions)](https://skillicons.dev)
+[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions,postman)](https://skillicons.dev)
 
 
 <!-- Table of Contents -->
