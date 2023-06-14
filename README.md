@@ -2,8 +2,8 @@
 
 
 <!-- CI Badge -->
-<a href="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml">
-    <img src="https://github.com/caard0s0/atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+<a href="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml">
+    <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
 &nbsp;
@@ -13,12 +13,12 @@
 <div align="center">
     <img width="200" src="./.github/imgs/bank-icon.jpg" alt="Bank Icon" />
     <h2>United Atomic - API Server</h2>
-    <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Golang</a>.</p>
-    <a href="https://github.com/caard0s0/atomic-bank/issues">Report Bugs</a>
+    <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Go</a>.</p>
+    <a href="https://github.com/caard0s0/united-atomic-bank/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/atomic-bank/actions">Actions</a>
+    <a href="https://github.com/caard0s0/united-atomic-bank/actions">Actions</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/atomic-bank/pulls">Pull Requests</a>
+    <a href="https://github.com/caard0s0/united-atomic-bank/pulls">Pull Requests</a>
 </div>
 
 &nbsp;
