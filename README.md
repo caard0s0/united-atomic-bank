@@ -51,17 +51,17 @@ A Financial Institution specializing in the intermediation of money between save
 
 <!-- Getting Started -->
 <h2 id="getting-started">Getting Started</h2>
+
 <p>To get started, You need to have <strong>Go 1.20+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.</p>
 
-<br>
-
 <p><strong>OBS:</strong> This guide is designed to run this project locally (Local Environment), on Linux-based systems.</p>
+
 
 <h3 id="installation">Installation</h3>
 
 1. Clone the repository.
     ```bash
-    git@github.com:caard0s0/united-atomic-bank.git
+    git clone git@github.com:caard0s0/united-atomic-bank.git
     ```
 2. Inside the root directory of the project, install all the dependencies.
     ```bash
