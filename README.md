@@ -57,9 +57,16 @@ A Financial Institution specializing in the intermediation of money between save
 
 <p><strong>OBS:</strong> This guide is designed to run this project locally (Local Environment), on Linux-based systems.</p>
 
-<br>
-
 <h3 id="installation">Installation</h3>
+
+1. Clone the repository.
+    ```bash
+    git@github.com:caard0s0/united-atomic-bank.git
+    ```
+2. Inside the root directory of the project, install all the dependencies.
+    ```bash
+    go get ./...
+    ```
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
