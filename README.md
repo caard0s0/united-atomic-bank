@@ -39,6 +39,9 @@ A Financial Institution specializing in the intermediation of money between save
     <ol>
         <li>
             <a href="#getting-started">Getting Started</a>
+            <ul>
+                <li href="#installation">Installation</li>
+            </ul>
         </li>
     </ol>
 </details>
@@ -50,7 +53,13 @@ A Financial Institution specializing in the intermediation of money between save
 <h2 id="getting-started">Getting Started</h2>
 To get started, You need to have <strong>Go 1.20+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.
 
-<strong>OBS:</strong>This guide is designed to run this project locally (Local Environment), on Linux-based systems.
+<br>
+
+<strong>OBS:</strong> This guide is designed to run this project locally (Local Environment), on Linux-based systems.
+
+<br>
+
+<h3 id="installation">Installation</h3>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
