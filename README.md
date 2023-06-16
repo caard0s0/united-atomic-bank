@@ -65,7 +65,7 @@ A Financial Institution specializing in the intermediation of money between save
     ```
 
 2. Inside the root directory of the project, install all the dependencies.
-    ```sh 
+    ```zsh 
     go get ./...
     ```
 
@@ -86,7 +86,13 @@ A Financial Institution specializing in the intermediation of money between save
     EOF
     ```
 
-5. 
+5. Install GoMock and be able to use the Mockgen tool.
+
+    * Framework installation.
+
+        ```bash
+        go install github.com/golang/mock/mockgen@v1.6.0
+        ```
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
