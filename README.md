@@ -69,7 +69,12 @@ A Financial Institution specializing in the intermediation of money between save
     go get ./...
     ```
 
-3. Create an `app.env` file with environment variables.
+3. Install Golang-Migrate as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
+
+4. Create an `app.env` file with environment variables.
+
+    <strong>WARNING:</strong> The values ​​below are for testing purposes only, please change them in the future.
+
     ```bash
     cat > app.env << EOF
     DB_DRIVER=postgres
@@ -80,6 +85,8 @@ A Financial Institution specializing in the intermediation of money between save
     ACCESS_TOKEN_DURATION=15m
     EOF
     ```
+
+5. 
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
