@@ -94,6 +94,14 @@ A Financial Institution specializing in the intermediation of money between save
         go install github.com/golang/mock/mockgen@v1.6.0
         ```
 
+    * add a PATH to your <strong>go/bin</strong> folder in the `~/.zshrc` file or another Shell.
+
+        <strong>WARNING:</strong> This PATH below is just an example.
+
+        ```bash
+        export PATH=$PATH:~/.asdf/installs/golang/1.20.5/packages/bin
+        ```
+
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
 </p> 
