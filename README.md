@@ -61,11 +61,24 @@ A Financial Institution specializing in the intermediation of money between save
 
 1. Clone the repository.
     ```bash
-    git clone git@github.com:caard0s0/united-atomic-bank.git
+    git clone https://github.com/caard0s0/united-atomic-bank.git
     ```
+
 2. Inside the root directory of the project, install all the dependencies.
-    ```bash
+    ```sh 
     go get ./...
+    ```
+
+3. Create an `app.env` file with environment variables.
+    ```bash
+    cat > app.env << EOF
+    DB_DRIVER=postgres
+    DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable
+    HTTP_SERVER_ADDRESS=0.0.0.0:8080
+
+    TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
+    ACCESS_TOKEN_DURATION=15m
+    EOF
     ```
 
 <p align="right">
