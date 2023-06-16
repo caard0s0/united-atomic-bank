@@ -69,7 +69,7 @@ A Financial Institution specializing in the intermediation of money between save
     go get ./...
     ```
 
-3. Install Golang-Migrate as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
+3. Install <strong>Golang-Migrate</strong> as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
 
 4. Create an `app.env` file with environment variables.
 
@@ -101,6 +101,8 @@ A Financial Institution specializing in the intermediation of money between save
         ```bash
         export PATH=$PATH:~/.asdf/installs/golang/1.20.5/packages/bin
         ```
+
+6. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
