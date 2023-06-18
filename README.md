@@ -122,6 +122,32 @@ A Financial Institution specializing in the intermediation of money between save
 <!-- Tests -->
 <h2 id="tests">Tests</h2>
 
+<p>To be able to run all the tests, follow the commands below.</p>
+
+1. Download the <strong>PostgreSQL Image</strong>.
+
+    ```cmd
+    docker pull postgres:15.2-alpine
+    ```
+
+2. Run a <strong>Container</strong> using the <strong>PostgreSQL Image</strong>.
+
+    ```cmd
+    make postgres
+    ```
+
+3. Create a <strong>DB</strong> for your Project.
+
+    ```cmd
+    make createdb
+    ```
+
+4. Run all the Tests.
+
+    ```cmd
+    make test
+    ```
+
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
 </p> 
