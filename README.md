@@ -41,6 +41,8 @@ A Financial Institution specializing in the intermediation of money between save
             <a href="#getting-started">Getting Started</a>
             <ul>
                 <li><a href="#installation">Installation</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#tests">Tests</a></li>
             </ul>
         </li>
     </ol>
@@ -86,7 +88,7 @@ A Financial Institution specializing in the intermediation of money between save
     EOF
     ```
 
-5. Install GoMock and be able to use the Mockgen tool.
+5. Install <strong>GoMock</strong> and be able to use the <strong>MockGen</strong> tool.
 
     * Framework installation.
 
@@ -103,6 +105,22 @@ A Financial Institution specializing in the intermediation of money between save
         ```
 
 6. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
+
+
+<!-- Usage -->
+<h2 id="usage">Usage</h2>
+
+<p>After completing the installation, you can run the project.</p>
+
+* Run the project.
+
+    ```bash
+    make server 
+    ```
+
+
+<!-- Tests -->
+<h2 id="tests">Tests</h2>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
