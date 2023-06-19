@@ -1,10 +1,10 @@
 package api
 
 import (
-	mockdb "atomic-bank/db/mock"
-	db "atomic-bank/db/sqlc"
-	"atomic-bank/token"
-	"atomic-bank/util"
+	mockdb "github.com/caard0s0/united-atomic-bank/db/mock"
+	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
+	"github.com/caard0s0/united-atomic-bank/token"
+	"github.com/caard0s0/united-atomic-bank/util"
 	"bytes"
 	"database/sql"
 	"encoding/json"

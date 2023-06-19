@@ -1,9 +1,9 @@
 package main
 
 import (
-	"atomic-bank/api"
-	db "atomic-bank/db/sqlc"
-	"atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank/api"
+	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
+	"github.com/caard0s0/united-atomic-bank/util"
 	"database/sql"
 	"log"
 

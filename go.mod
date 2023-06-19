@@ -1,4 +1,4 @@
-module atomic-bank
+module github.com/caard0s0/united-atomic-bank
 
 go 1.20
 

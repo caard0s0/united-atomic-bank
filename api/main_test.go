@@ -1,8 +1,8 @@
 package api
 
 import (
-	db "atomic-bank/db/sqlc"
-	"atomic-bank/util"
+	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
+	"github.com/caard0s0/united-atomic-bank/util"
 	"os"
 	"testing"
 	"time"

@@ -1,7 +1,7 @@
 package token
 
 import (
-	"atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank/util"
 	"testing"
 	"time"
 

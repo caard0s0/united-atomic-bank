@@ -1,7 +1,7 @@
 package db
 
 import (
-	"atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank/util"
 	"database/sql"
 	"log"
 	"os"
