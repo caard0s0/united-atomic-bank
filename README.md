@@ -129,22 +129,28 @@ A Financial Institution specializing in the intermediation of money between save
 1. Download the <strong>PostgreSQL Image</strong>.
 
     ```cmd
-    docker pull postgres:15.2-alpine
+    docker pull postgres:15.3
     ```
 
 2. Run a <strong>Container</strong> using the <strong>PostgreSQL Image</strong>.
 
     ```cmd
-    docker run --name postgres15.2 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.2-alpine
+    docker run --name postgres15.3 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.3
     ```
 
 3. Create a <strong>DB</strong> for your project.
 
     ```cmd
-    docker exec -it postgres15.2 createdb --username=root --owner=root bank
+    docker exec -it postgres15.3 createdb --username=root --owner=root bank
     ```
 
-4. Run all the Tests.
+5. Run the <strong>Migrations</strong>.
+
+    ```cmd
+    migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up	
+    ```
+
+6. Run all the Tests.
 
     ```cmd
     go test -v -cover ./...
