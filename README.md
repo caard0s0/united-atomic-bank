@@ -115,7 +115,7 @@ A Financial Institution specializing in the intermediation of money between save
 * Run the project.
 
     ```bash
-    make server 
+    go run main.go
     ```
 
 
@@ -133,19 +133,19 @@ A Financial Institution specializing in the intermediation of money between save
 2. Run a <strong>Container</strong> using the <strong>PostgreSQL Image</strong>.
 
     ```cmd
-    make postgres
+    docker run --name postgres15.2 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.2-alpine
     ```
 
-3. Create a <strong>DB</strong> for your Project.
+3. Create a <strong>DB</strong> for your project.
 
     ```cmd
-    make createdb
+    docker exec -it postgres15.2 createdb --username=root --owner=root bank
     ```
 
 4. Run all the Tests.
 
     ```cmd
-    make test
+    go test -v -cover ./...
     ```
 
 <p align="right">
