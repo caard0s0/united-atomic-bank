@@ -60,6 +60,7 @@ A Financial Institution specializing in the intermediation of money between save
 <p><strong>OBS:</strong> This guide is designed to run this project locally (Local Environment), on Linux-based systems.</p>
 
 
+<!-- Installation -->
 <h3 id="installation">Installation</h3>
 
 1. Clone the repository.
@@ -163,7 +164,8 @@ This project is being distributed under the <strong>MIT License</strong>, see ``
 <!-- Contact -->
 <h2 id="contact">Contact</h2>
 
-* Software Engineer - Vinicius Cardoso - <a href="mailto:cardoso.business.ctt@gmail.com">Email</a>
+* Software Engineer  
+* Vinicius Cardoso - <a href="mailto:cardoso.business.ctt@gmail.com">Email</a>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
