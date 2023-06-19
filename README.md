@@ -45,6 +45,8 @@ A Financial Institution specializing in the intermediation of money between save
                 <li><a href="#tests">Tests</a></li>
             </ul>
         </li>
+        <li><a href="#license">License</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ol>
 </details>
 
@@ -147,6 +149,22 @@ A Financial Institution specializing in the intermediation of money between save
     ```cmd
     go test -v -cover ./...
     ```
+
+
+<br>
+
+<!-- License -->
+<h2 id="license">License</h2>
+
+This project is being distributed under the <strong>MIT License</strong>, see ```LICENSE.txt``` for more information.
+
+
+<br>
+
+<!-- Contact -->
+<h2 id="contact">Contact</h2>
+
+* Software Engineer - Vinicius Cardoso - <a href="mailto:cardoso.business.ctt@gmail.com">Email</a>
 
 <p align="right">
     <a href="#top"> &uarr; back to top</a>
