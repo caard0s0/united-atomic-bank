@@ -6,6 +6,11 @@
     <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
+<!-- CodeFactor Badge -->
+<a href="https://www.codefactor.io/repository/github/caard0s0/united-atomic-bank">
+    <img src="https://www.codefactor.io/repository/github/caard0s0/united-atomic-bank/badge" alt="CodeFactor" />
+</a>
+
 &nbsp;
 
 
