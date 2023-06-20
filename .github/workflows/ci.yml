@@ -41,13 +41,14 @@ jobs:
 
     - name: Create app.env file
       run: |
-        touch app.env
+        cat > app.env << EOF
+          DB_DRIVER=postgres
+          DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable
+          HTTP_SERVER_ADDRESS=0.0.0.0:8080
 
-        echo DB_DRIVER=postgres >> app.env
-        echo DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable >> app.env
-        echo HTTP_SERVER_ADDRESS=0.0.0.0:8080 >> app.env
-        echo TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012 >> app.env
-        echo ACCESS_TOKEN_DURATION=15m >> app.env
+          TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
+          ACCESS_TOKEN_DURATION=15m
+        EOF
 
     - name: Install golang-migrate
       run: |
