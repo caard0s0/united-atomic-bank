@@ -40,8 +40,8 @@ A Financial Institution specializing in the intermediation of money between save
             <a href="#getting-started">Getting Started</a>
             <ul>
                 <li><a href="#installation">Installation</a></li>
-                <li><a href="#usage">Usage</a></li>
                 <li><a href="#tests">Tests</a></li>
+                <li><a href="#usage">Usage</a></li>
             </ul>
         </li>
         <li><a href="#license">License</a></li>
@@ -68,14 +68,9 @@ A Financial Institution specializing in the intermediation of money between save
     git clone https://github.com/caard0s0/united-atomic-bank.git
     ```
 
-2. Inside the root directory of the project, install all the dependencies.
-    ```zsh 
-    go get ./...
-    ```
+2. Install <strong>Golang-Migrate</strong> as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
 
-3. Install <strong>Golang-Migrate</strong> as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
-
-4. Create an `app.env` file with environment variables.
+3. Create an `app.env` file with environment variables.
 
     <strong>WARNING:</strong> The values ​​below are for testing purposes only, please change them in the future.
 
@@ -90,7 +85,7 @@ A Financial Institution specializing in the intermediation of money between save
     EOF
     ```
 
-5. Install <strong>GoMock</strong> and be able to use the <strong>MockGen</strong> tool.
+4. Install <strong>GoMock</strong> and be able to use the <strong>MockGen</strong> tool.
 
     * Framework installation.
 
@@ -106,19 +101,7 @@ A Financial Institution specializing in the intermediation of money between save
         export PATH=$PATH:~/.asdf/installs/golang/1.20.5/packages/bin
         ```
 
-6. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
-
-
-<!-- Usage -->
-<h2 id="usage">Usage</h2>
-
-<p>After completing the installation, you can run the project.</p>
-
-* Run the project.
-
-    ```bash
-    go run main.go
-    ```
+5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
 
 
 <!-- Tests -->
@@ -150,10 +133,22 @@ A Financial Institution specializing in the intermediation of money between save
     migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up	
     ```
 
-6. Run all the Tests.
+6. Install all dependencies from the <strong>go.mod</strong> file and run all the <strong>Tests</strong>.
 
     ```cmd
     go test -v -cover ./...
+    ```
+
+
+<!-- Usage -->
+<h2 id="usage">Usage</h2>
+
+<p>After completing the installation, you can run the project.</p>
+
+* Run the project.
+
+    ```bash
+    go run main.go
     ```
 
 
