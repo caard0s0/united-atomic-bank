@@ -143,7 +143,7 @@ A Financial Institution specializing in the intermediation of money between save
 <!-- Usage -->
 <h2 id="usage">Usage</h2>
 
-<p>After completing the installation, you can run the project.</p>
+<p>After completing the installation and tests, you can run the project.</p>
 
 * Run the project.
 
