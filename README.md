@@ -62,7 +62,7 @@ A Financial Institution specializing in the intermediation of money between save
 
 <p>To get started, You need to have <strong>Go 1.20+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.</p>
 
-<p><strong>OBS:</strong> This guide is designed to run this project locally (Local Environment), on Linux-based systems.</p>
+<p><strong>OBS:</strong> This guide is designed to run this project locally (Local Development), on Linux-based systems.</p>
 
 
 <!-- Installation -->
