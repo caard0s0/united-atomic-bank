@@ -6,11 +6,6 @@
     <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
-<!-- CodeFactor Badge -->
-<a href="https://www.codefactor.io/repository/github/caard0s0/united-atomic-bank">
-    <img src="https://www.codefactor.io/repository/github/caard0s0/united-atomic-bank/badge" alt="CodeFactor" />
-</a>
-
 &nbsp;
 
 
@@ -34,7 +29,7 @@ A Financial Institution specializing in the intermediation of money between save
 
 <h3>Built With</h3>
 
-[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,githubactions,postman)](https://skillicons.dev)
+[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,aws,postman,githubactions)](https://skillicons.dev)
 
 
 <!-- Table of Contents -->
