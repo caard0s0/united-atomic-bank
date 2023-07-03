@@ -6,6 +6,11 @@
     <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
+<!-- Build & Publish Docker Badge -->
+<a href="https://github.com/caard0s0/united-atomic-bank/actions/workflows/deploy.yml">
+    <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Build Status">
+</a>
+
 &nbsp;
 
 
