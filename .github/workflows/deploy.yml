@@ -15,17 +15,6 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Create app.env file
-      run: |
-        cat > app.env << EOF
-          DB_DRIVER=postgres
-          DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable
-          HTTP_SERVER_ADDRESS=0.0.0.0:8080
-
-          TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
-          ACCESS_TOKEN_DURATION=15m
-        EOF
-
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
@@ -36,6 +25,9 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Load secrets and save to app.env
+      run: aws secretsmanager get-secret-value --secret-id united_atomic_bank --query SecretString --output text | jq -r 'to_entries|map("\(.key)=\(.value)")|.[]' > app.env
 
     - name: Build, tag, and push docker image to Amazon ECR
       env:
