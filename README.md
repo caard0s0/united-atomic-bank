@@ -34,7 +34,7 @@ A Financial Institution specializing in the intermediation of money between save
 
 <h3>Built With</h3>
 
-[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,aws,postman,githubactions)](https://skillicons.dev)
+[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,aws,postman,githubactions,kubernetes)](https://skillicons.dev)
 
 
 <!-- Table of Contents -->
