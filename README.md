@@ -135,7 +135,7 @@ A Financial Institution specializing in the intermediation of money between save
 5. Run the <strong>Migrations</strong>.
 
     ```cmd
-    migrate -path db/migration -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up	
+    migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up	
     ```
 
 6. Install all dependencies from the <strong>go.mod</strong> file and run all the <strong>Tests</strong>.

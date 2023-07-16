@@ -1,12 +1,13 @@
 package api
 
 import (
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
 	"database/sql"
 	"errors"
 	"net/http"
 	"time"
+
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank/token"
 
 	"github.com/gin-gonic/gin"
 )

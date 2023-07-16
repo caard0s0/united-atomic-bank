@@ -1,11 +1,12 @@
 package api
 
 import (
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
-	"github.com/caard0s0/united-atomic-bank/util"
 	"os"
 	"testing"
 	"time"
+
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"

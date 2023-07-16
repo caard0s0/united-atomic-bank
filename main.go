@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/caard0s0/united-atomic-bank/api"
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
-	"github.com/caard0s0/united-atomic-bank/util"
 	"database/sql"
 	"log"
+
+	"github.com/caard0s0/united-atomic-bank/api"
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank/util"
 
 	_ "github.com/lib/pq"
 )

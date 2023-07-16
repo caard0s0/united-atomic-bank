@@ -1,10 +1,6 @@
 package api
 
 import (
-	mockdb "github.com/caard0s0/united-atomic-bank/db/mock"
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
-	"github.com/caard0s0/united-atomic-bank/util"
 	"bytes"
 	"database/sql"
 	"encoding/json"
@@ -12,6 +8,11 @@ import (
 	"net/http/httptest"
 	"testing"
 	"time"
+
+	mockdb "github.com/caard0s0/united-atomic-bank/database/mock"
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank/token"
+	"github.com/caard0s0/united-atomic-bank/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"

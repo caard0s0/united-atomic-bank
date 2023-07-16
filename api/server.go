@@ -1,10 +1,11 @@
 package api
 
 import (
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
+	"fmt"
+
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
 	"github.com/caard0s0/united-atomic-bank/token"
 	"github.com/caard0s0/united-atomic-bank/util"
-	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"

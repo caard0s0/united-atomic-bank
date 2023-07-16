@@ -1,14 +1,15 @@
 package api
 
 import (
-	db "github.com/caard0s0/united-atomic-bank/db/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
 	"database/sql"
 	"errors"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
+	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank/token"
 	"github.com/lib/pq"
+
+	"github.com/gin-gonic/gin"
 )
 
 type createAccountRequest struct {
