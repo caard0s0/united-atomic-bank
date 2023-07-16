@@ -1,11 +1,12 @@
 package db
 
 import (
-	"github.com/caard0s0/united-atomic-bank/util"
 	"database/sql"
 	"log"
 	"os"
 	"testing"
+
+	"github.com/caard0s0/united-atomic-bank/util"
 
 	_ "github.com/lib/pq"
 )

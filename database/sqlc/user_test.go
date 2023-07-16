@@ -1,10 +1,11 @@
 package db
 
 import (
-	"github.com/caard0s0/united-atomic-bank/util"
 	"context"
 	"testing"
 	"time"
+
+	"github.com/caard0s0/united-atomic-bank/util"
 
 	"github.com/stretchr/testify/require"
 )
