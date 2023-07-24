@@ -45,8 +45,8 @@ A Financial Institution specializing in the intermediation of money between save
             <a href="#getting-started">Getting Started</a>
             <ul>
                 <li><a href="#installation">Installation</a></li>
-                <li><a href="#tests">Tests</a></li>
                 <li><a href="#usage">Usage</a></li>
+                <li><a href="#tests">Tests</a></li>
             </ul>
         </li>
         <li><a href="#license">License</a></li>
@@ -109,51 +109,27 @@ A Financial Institution specializing in the intermediation of money between save
 5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
 
 
-<!-- Tests -->
-<h2 id="tests">Tests</h2>
-
-<p>To be able to run all the tests, follow the commands below.</p>
-
-1. Download the <strong>PostgreSQL Image</strong>.
-
-    ```cmd
-    docker pull postgres:15.3
-    ```
-
-2. Run a <strong>Container</strong> using the <strong>PostgreSQL Image</strong>.
-
-    ```cmd
-    docker run --name postgres15.3 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:15.3
-    ```
-
-3. Create a <strong>DB</strong> for your project.
-
-    ```cmd
-    docker exec -it postgres15.3 createdb --username=root --owner=root bank
-    ```
-
-5. Run the <strong>Migrations</strong>.
-
-    ```cmd
-    migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/bank?sslmode=disable" -verbose up	
-    ```
-
-6. Install all dependencies from the <strong>go.mod</strong> file and run all the <strong>Tests</strong>.
-
-    ```cmd
-    go test -v -cover ./...
-    ```
-
-
 <!-- Usage -->
 <h2 id="usage">Usage</h2>
 
-<p>After completing the installation and tests, you can run the project.</p>
+<p>After completing the installation, you can run the project.</p>
 
-* Run the project.
+1. Create and run the <strong>Containers</strong>.
 
-    ```bash
-    go run main.go
+    ```cmd
+    docker compose up -d
+    ```
+
+
+<!-- Tests -->
+<h2 id="tests">Tests</h2>
+
+<p>To be able to run all the tests, follow the command below.</p>
+
+1. Run all the <strong>Tests</strong>.
+
+    ```cmd
+    go test -v -cover ./...
     ```
 
 
