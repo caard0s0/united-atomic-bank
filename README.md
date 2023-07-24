@@ -28,7 +28,7 @@
 &nbsp;
 
 ![db_diagram](https://github.com/caard0s0/united-atomic-bank/assets/95318788/79e36572-84bc-46ff-9a98-97783ce29d22)
-A Financial Institution specializing in the intermediation of money between savers and those in need of loans, as well as in the custody of this money. It was created following SOLID principles and Clean Architecture, for better scalability and code maintenance. Also, thinking about a reliable and well-tested application, with Unit and Automated Tests using Mock DB, the tests apply the concept of DB Stubs.
+A Financial Software specialized in the intermediation of money between savers and those in need of loans, as well as in the custody of that money. It was created following SOLID principles, for better scalability and code maintenance. In addition, thinking about a reliable and well-tested application, with Unit and Automated Tests using Mock DB, the tests apply the concept of DB Stubs. Deploying it using Amazon's Cloud services.
 
 &nbsp;
 
