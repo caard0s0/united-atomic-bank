@@ -1,11 +1,11 @@
 CREATE TABLE "loans" (
-  "id" bigserial PRIMARY KEY,
-  "account_id" bigint NOT NULL,
-  "loan_amount" bigint NOT NULL,
-  "interest_rate" bigint NOT NULL,
-  "status" varchar NOT NULL,
-  "start_date" timestamp NOT NULL DEFAULT (now()),
-  "end_date" timestamp NOT NULL
+  "id" BIGSERIAL PRIMARY KEY,
+  "account_id" BIGINT NOT NULL,
+  "loan_amount" BIGINT NOT NULL,
+  "interest_rate" BIGINT NOT NULL,
+  "status" VARCHAR NOT NULL,
+  "start_date" TIMESTAMP NOT NULL DEFAULT (now()),
+  "end_date" TIMESTAMP NOT NULL
 );
 
 CREATE INDEX ON "loans" ("account_id");
