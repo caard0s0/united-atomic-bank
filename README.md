@@ -61,7 +61,7 @@ A Financial Software specialized in the intermediation of money between savers a
 <!-- Getting Started -->
 <h2 id="getting-started">Getting Started</h2>
 
-<p>To get started, You need to have <strong>Go 1.20+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.</p>
+<p>To get started, You need to have <strong>Go 1.21+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.</p>
 
 <p><strong>OBS:</strong> This guide is designed to run this project locally (Local Development), on Linux-based systems.</p>
 
@@ -104,7 +104,7 @@ A Financial Software specialized in the intermediation of money between savers a
         <strong>WARNING:</strong> This PATH below is just an example.
 
         ```bash
-        export PATH=$PATH:~/.asdf/installs/golang/1.20.5/packages/bin
+        export PATH=$PATH:~/.asdf/installs/golang/1.21.0/packages/bin
         ```
 
 5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
