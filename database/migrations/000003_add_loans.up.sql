@@ -4,8 +4,8 @@ CREATE TABLE "loans" (
   "loan_amount" BIGINT NOT NULL,
   "interest_rate" BIGINT NOT NULL,
   "status" VARCHAR NOT NULL,
-  "start_date" TIMESTAMP NOT NULL DEFAULT (now()),
-  "end_date" TIMESTAMP NOT NULL
+  "start_date" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT (now()),
+  "end_date" TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
 CREATE INDEX ON "loans" ("account_id");

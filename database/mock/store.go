@@ -230,34 +230,34 @@ func (mr *MockStoreMockRecorder) ListTransfers(arg0, arg1 interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTransfers", reflect.TypeOf((*MockStore)(nil).ListTransfers), arg0, arg1)
 }
 
-// TransferLoanToAnAccount mocks base method.
-func (m *MockStore) TransferLoanToAnAccount(arg0 context.Context, arg1 db.TransferLoanToAnAccountParams) (db.TransferLoanToAnAccountResult, error) {
+// TransferLoanTransaction mocks base method.
+func (m *MockStore) TransferLoanTransaction(arg0 context.Context, arg1 db.TransferLoanTransactionParams) (db.TransferLoanTransactionResult, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "TransferLoanToAnAccount", arg0, arg1)
-	ret0, _ := ret[0].(db.TransferLoanToAnAccountResult)
+	ret := m.ctrl.Call(m, "TransferLoanTransaction", arg0, arg1)
+	ret0, _ := ret[0].(db.TransferLoanTransactionResult)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// TransferLoanToAnAccount indicates an expected call of TransferLoanToAnAccount.
-func (mr *MockStoreMockRecorder) TransferLoanToAnAccount(arg0, arg1 interface{}) *gomock.Call {
+// TransferLoanTransaction indicates an expected call of TransferLoanTransaction.
+func (mr *MockStoreMockRecorder) TransferLoanTransaction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TransferLoanToAnAccount", reflect.TypeOf((*MockStore)(nil).TransferLoanToAnAccount), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TransferLoanTransaction", reflect.TypeOf((*MockStore)(nil).TransferLoanTransaction), arg0, arg1)
 }
 
-// TransferTransactionBetweenAccounts mocks base method.
-func (m *MockStore) TransferTransactionBetweenAccounts(arg0 context.Context, arg1 db.TransferTransactionBetweenAccountsParams) (db.TransferTransactionBetweenAccountsResult, error) {
+// TransferTransaction mocks base method.
+func (m *MockStore) TransferTransaction(arg0 context.Context, arg1 db.CreateTransferParams) (db.TransferTransactionResult, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "TransferTransactionBetweenAccounts", arg0, arg1)
-	ret0, _ := ret[0].(db.TransferTransactionBetweenAccountsResult)
+	ret := m.ctrl.Call(m, "TransferTransaction", arg0, arg1)
+	ret0, _ := ret[0].(db.TransferTransactionResult)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// TransferTransactionBetweenAccounts indicates an expected call of TransferTransactionBetweenAccounts.
-func (mr *MockStoreMockRecorder) TransferTransactionBetweenAccounts(arg0, arg1 interface{}) *gomock.Call {
+// TransferTransaction indicates an expected call of TransferTransaction.
+func (mr *MockStoreMockRecorder) TransferTransaction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TransferTransactionBetweenAccounts", reflect.TypeOf((*MockStore)(nil).TransferTransactionBetweenAccounts), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TransferTransaction", reflect.TypeOf((*MockStore)(nil).TransferTransaction), arg0, arg1)
 }
 
 // UpdateAccountBalance mocks base method.

@@ -12,13 +12,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type TransferLoanToAnAccountRequest struct {
+type TransferLoanTransactionRequest struct {
 	AccountID  int64 `json:"account_id" binding:"required,min=1"`
 	LoanAmount int64 `json:"loan_amount" binding:"required,gt=0"`
 }
 
 func (server *Server) createLoan(ctx *gin.Context) {
-	var req TransferLoanToAnAccountRequest
+	var req TransferLoanTransactionRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
@@ -36,7 +36,7 @@ func (server *Server) createLoan(ctx *gin.Context) {
 		return
 	}
 
-	arg := db.TransferLoanToAnAccountParams{
+	arg := db.TransferLoanTransactionParams{
 		AccountID:    req.AccountID,
 		LoanAmount:   req.LoanAmount,
 		InterestRate: 1,
@@ -44,7 +44,7 @@ func (server *Server) createLoan(ctx *gin.Context) {
 		EndDate:      time.Now().Add(time.Minute).Truncate(time.Second),
 	}
 
-	loan, err := server.store.TransferLoanToAnAccount(ctx, arg)
+	loan, err := server.store.TransferLoanTransaction(ctx, arg)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
