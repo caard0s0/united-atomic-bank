@@ -33,8 +33,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "OK",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": amount,
+				"account_id": account.ID,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -61,8 +61,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "AccountNotFound",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": amount,
+				"account_id": account.ID,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -84,8 +84,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "InvalidID",
 			body: gin.H{
-				"account_id":  0,
-				"loan_amount": amount,
+				"account_id": 0,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -106,8 +106,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "NegativeAmount",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": -amount,
+				"account_id": account.ID,
+				"amount":     -amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -128,8 +128,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "UnauthorizedUser",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": amount,
+				"account_id": account.ID,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, "unauthorized_user", time.Minute)
@@ -151,8 +151,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "GetAccountError",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": amount,
+				"account_id": account.ID,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -174,8 +174,8 @@ func TestLoanTransferAPI(t *testing.T) {
 		{
 			name: "LoanTransferTransactionError",
 			body: gin.H{
-				"account_id":  account.ID,
-				"loan_amount": amount,
+				"account_id": account.ID,
+				"amount":     amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
