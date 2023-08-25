@@ -2,7 +2,6 @@ package db
 
 import (
 	"context"
-	"time"
 )
 
 // LoanTransferTransactionResult is the result of the transfer loan
@@ -21,11 +20,8 @@ func (store *SQLStore) LoanTransferTransaction(ctx context.Context, arg CreateLo
 		var err error
 
 		result.Loan, err = q.CreateLoanTransfer(ctx, CreateLoanTransferParams{
-			AccountID:    arg.AccountID,
-			LoanAmount:   arg.LoanAmount,
-			InterestRate: arg.InterestRate,
-			Status:       arg.Status,
-			EndDate:      time.Now().UTC().Add(time.Minute),
+			AccountID: arg.AccountID,
+			Amount:    arg.Amount,
 		})
 		if err != nil {
 			return err
@@ -33,13 +29,13 @@ func (store *SQLStore) LoanTransferTransaction(ctx context.Context, arg CreateLo
 
 		result.ToEntry, err = q.CreateEntry(ctx, CreateEntryParams{
 			AccountID: arg.AccountID,
-			Amount:    arg.LoanAmount,
+			Amount:    arg.Amount,
 		})
 		if err != nil {
 			return err
 		}
 
-		result.ToAccount, err = updateAccountLoanMoney(ctx, q, arg.AccountID, arg.LoanAmount)
+		result.ToAccount, err = updateAccountLoanMoney(ctx, q, arg.AccountID, arg.Amount)
 		if err != nil {
 			return err
 		}

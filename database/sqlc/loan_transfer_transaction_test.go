@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-	"time"
 
 	"github.com/stretchr/testify/require"
 )
@@ -18,8 +17,6 @@ func TestLoanTransferTransaction(t *testing.T) {
 	// run a concurrent transfer transactions
 	n := 5
 	amount := int64(10)
-	interestRate := int64(1)
-	status := "Active"
 
 	errs := make(chan error)
 	results := make(chan LoanTransferTransactionResult)
@@ -28,11 +25,8 @@ func TestLoanTransferTransaction(t *testing.T) {
 		go func() {
 			ctx := context.Background()
 			result, err := store.LoanTransferTransaction(ctx, CreateLoanTransferParams{
-				AccountID:    account.ID,
-				LoanAmount:   amount,
-				InterestRate: interestRate,
-				Status:       status,
-				EndDate:      time.Now().Add(time.Minute),
+				AccountID: account.ID,
+				Amount:    amount,
 			})
 
 			errs <- err
@@ -52,12 +46,10 @@ func TestLoanTransferTransaction(t *testing.T) {
 		loan := result.Loan
 		require.NotEmpty(t, loan)
 		require.Equal(t, account.ID, loan.AccountID)
-		require.Equal(t, amount, loan.LoanAmount)
-		require.Equal(t, interestRate, loan.InterestRate)
-		require.Equal(t, status, loan.Status)
+		require.Equal(t, amount, loan.Amount)
 		require.NotZero(t, loan.ID)
-		require.NotZero(t, loan.StartDate)
-		require.NotZero(t, loan.EndDate)
+		require.NotZero(t, loan.StartAt)
+		require.NotZero(t, loan.EndAt)
 
 		_, err = store.GetLoanTransfer(context.Background(), loan.ID)
 		require.NoError(t, err)

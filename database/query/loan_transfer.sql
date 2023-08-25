@@ -1,12 +1,9 @@
 -- name: CreateLoanTransfer :one
 INSERT INTO loan_transfers (
   account_id,
-  loan_amount,
-  interest_rate,
-  status,
-  end_date
+  amount
 ) VALUES (
-  $1, $2, $3, $4, $5
+  $1, $2
 ) RETURNING *;
 
 -- name: GetLoanTransfer :one

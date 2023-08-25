@@ -12,11 +12,8 @@ import (
 
 func createRandomLoanTransfer(t *testing.T, account Account) LoanTransfer {
 	arg := CreateLoanTransferParams{
-		AccountID:    account.ID,
-		LoanAmount:   util.RandomMoney(),
-		InterestRate: 1.0,
-		Status:       "Active",
-		EndDate:      time.Now().Add(time.Minute),
+		AccountID: account.ID,
+		Amount:    util.RandomMoney(),
 	}
 
 	loan, err := TestQueries.CreateLoanTransfer(context.Background(), arg)
@@ -24,13 +21,11 @@ func createRandomLoanTransfer(t *testing.T, account Account) LoanTransfer {
 	require.NotEmpty(t, loan)
 
 	require.Equal(t, arg.AccountID, loan.AccountID)
-	require.Equal(t, arg.LoanAmount, loan.LoanAmount)
-	require.Equal(t, arg.InterestRate, loan.InterestRate)
-	require.Equal(t, arg.Status, loan.Status)
+	require.Equal(t, arg.Amount, loan.Amount)
 
 	require.NotZero(t, loan.ID)
-	require.NotZero(t, loan.StartDate)
-	require.NotZero(t, loan.EndDate)
+	require.NotZero(t, loan.StartAt)
+	require.NotZero(t, loan.EndAt)
 
 	return loan
 }
@@ -50,8 +45,8 @@ func TestGetLoanTransfer(t *testing.T) {
 
 	require.Equal(t, loan1.ID, loan2.ID)
 	require.Equal(t, loan1.AccountID, loan2.AccountID)
-	require.Equal(t, loan1.LoanAmount, loan2.LoanAmount)
+	require.Equal(t, loan1.Amount, loan2.Amount)
 	require.Equal(t, loan1.InterestRate, loan2.InterestRate)
-	require.WithinDuration(t, loan1.StartDate, loan2.StartDate, time.Second)
-	require.WithinDuration(t, loan1.EndDate, loan2.EndDate, time.Second)
+	require.WithinDuration(t, loan1.StartAt, loan2.StartAt, time.Second)
+	require.WithinDuration(t, loan1.EndAt, loan2.EndAt, time.Second)
 }

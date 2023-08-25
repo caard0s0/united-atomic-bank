@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"errors"
 	"net/http"
-	"time"
 
 	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
 	"github.com/caard0s0/united-atomic-bank/token"
@@ -13,8 +12,8 @@ import (
 )
 
 type LoanTransferTransactionRequest struct {
-	AccountID  int64 `json:"account_id" binding:"required,min=1"`
-	LoanAmount int64 `json:"loan_amount" binding:"required,gt=0"`
+	AccountID int64 `json:"account_id" binding:"required,min=1"`
+	Amount    int64 `json:"amount" binding:"required,gt=0"`
 }
 
 func (server *Server) createLoanTransfer(ctx *gin.Context) {
@@ -37,11 +36,8 @@ func (server *Server) createLoanTransfer(ctx *gin.Context) {
 	}
 
 	arg := db.CreateLoanTransferParams{
-		AccountID:    req.AccountID,
-		LoanAmount:   req.LoanAmount,
-		InterestRate: 1,
-		Status:       "Active",
-		EndDate:      time.Now().Add(time.Minute).Truncate(time.Second),
+		AccountID: req.AccountID,
+		Amount:    req.Amount,
 	}
 
 	loan, err := server.store.LoanTransferTransaction(ctx, arg)

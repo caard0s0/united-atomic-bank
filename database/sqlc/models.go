@@ -28,12 +28,12 @@ type LoanTransfer struct {
 	ID        int64 `json:"id"`
 	AccountID int64 `json:"account_id"`
 	// must be positive
-	LoanAmount int64 `json:"loan_amount"`
+	Amount int64 `json:"amount"`
 	// must be positive
-	InterestRate int64     `json:"interest_rate"`
-	Status       string    `json:"status"`
-	StartDate    time.Time `json:"start_date"`
-	EndDate      time.Time `json:"end_date"`
+	InterestRate string    `json:"interest_rate"`
+	Open         bool      `json:"open"`
+	StartAt      time.Time `json:"start_at"`
+	EndAt        time.Time `json:"end_at"`
 }
 
 type Transfer struct {
