@@ -10,7 +10,7 @@ import (
 type Store interface {
 	Querier
 	TransferTransaction(ctx context.Context, arg CreateTransferParams) (TransferTransactionResult, error)
-	TransferLoanTransaction(ctx context.Context, arg TransferLoanTransactionParams) (TransferLoanTransactionResult, error)
+	LoanTransferTransaction(ctx context.Context, arg CreateLoanTransferParams) (LoanTransferTransactionResult, error)
 }
 
 // SQLStore provides all functions to execute SQL queries and transactions

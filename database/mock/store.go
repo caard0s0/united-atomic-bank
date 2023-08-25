@@ -65,19 +65,19 @@ func (mr *MockStoreMockRecorder) CreateEntry(arg0, arg1 interface{}) *gomock.Cal
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateEntry", reflect.TypeOf((*MockStore)(nil).CreateEntry), arg0, arg1)
 }
 
-// CreateLoan mocks base method.
-func (m *MockStore) CreateLoan(arg0 context.Context, arg1 db.CreateLoanParams) (db.Loan, error) {
+// CreateLoanTransfer mocks base method.
+func (m *MockStore) CreateLoanTransfer(arg0 context.Context, arg1 db.CreateLoanTransferParams) (db.LoanTransfer, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "CreateLoan", arg0, arg1)
-	ret0, _ := ret[0].(db.Loan)
+	ret := m.ctrl.Call(m, "CreateLoanTransfer", arg0, arg1)
+	ret0, _ := ret[0].(db.LoanTransfer)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// CreateLoan indicates an expected call of CreateLoan.
-func (mr *MockStoreMockRecorder) CreateLoan(arg0, arg1 interface{}) *gomock.Call {
+// CreateLoanTransfer indicates an expected call of CreateLoanTransfer.
+func (mr *MockStoreMockRecorder) CreateLoanTransfer(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateLoan", reflect.TypeOf((*MockStore)(nil).CreateLoan), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateLoanTransfer", reflect.TypeOf((*MockStore)(nil).CreateLoanTransfer), arg0, arg1)
 }
 
 // CreateTransfer mocks base method.
@@ -140,19 +140,19 @@ func (mr *MockStoreMockRecorder) GetEntry(arg0, arg1 interface{}) *gomock.Call {
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEntry", reflect.TypeOf((*MockStore)(nil).GetEntry), arg0, arg1)
 }
 
-// GetLoan mocks base method.
-func (m *MockStore) GetLoan(arg0 context.Context, arg1 int64) (db.Loan, error) {
+// GetLoanTransfer mocks base method.
+func (m *MockStore) GetLoanTransfer(arg0 context.Context, arg1 int64) (db.LoanTransfer, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetLoan", arg0, arg1)
-	ret0, _ := ret[0].(db.Loan)
+	ret := m.ctrl.Call(m, "GetLoanTransfer", arg0, arg1)
+	ret0, _ := ret[0].(db.LoanTransfer)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetLoan indicates an expected call of GetLoan.
-func (mr *MockStoreMockRecorder) GetLoan(arg0, arg1 interface{}) *gomock.Call {
+// GetLoanTransfer indicates an expected call of GetLoanTransfer.
+func (mr *MockStoreMockRecorder) GetLoanTransfer(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLoan", reflect.TypeOf((*MockStore)(nil).GetLoan), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLoanTransfer", reflect.TypeOf((*MockStore)(nil).GetLoanTransfer), arg0, arg1)
 }
 
 // GetTransfer mocks base method.
@@ -230,19 +230,19 @@ func (mr *MockStoreMockRecorder) ListTransfers(arg0, arg1 interface{}) *gomock.C
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ListTransfers", reflect.TypeOf((*MockStore)(nil).ListTransfers), arg0, arg1)
 }
 
-// TransferLoanTransaction mocks base method.
-func (m *MockStore) TransferLoanTransaction(arg0 context.Context, arg1 db.TransferLoanTransactionParams) (db.TransferLoanTransactionResult, error) {
+// LoanTransferTransaction mocks base method.
+func (m *MockStore) LoanTransferTransaction(arg0 context.Context, arg1 db.CreateLoanTransferParams) (db.LoanTransferTransactionResult, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "TransferLoanTransaction", arg0, arg1)
-	ret0, _ := ret[0].(db.TransferLoanTransactionResult)
+	ret := m.ctrl.Call(m, "LoanTransferTransaction", arg0, arg1)
+	ret0, _ := ret[0].(db.LoanTransferTransactionResult)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// TransferLoanTransaction indicates an expected call of TransferLoanTransaction.
-func (mr *MockStoreMockRecorder) TransferLoanTransaction(arg0, arg1 interface{}) *gomock.Call {
+// LoanTransferTransaction indicates an expected call of LoanTransferTransaction.
+func (mr *MockStoreMockRecorder) LoanTransferTransaction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TransferLoanTransaction", reflect.TypeOf((*MockStore)(nil).TransferLoanTransaction), arg0, arg1)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "LoanTransferTransaction", reflect.TypeOf((*MockStore)(nil).LoanTransferTransaction), arg0, arg1)
 }
 
 // TransferTransaction mocks base method.
