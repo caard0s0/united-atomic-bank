@@ -10,8 +10,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func createRandomLoan(t *testing.T, account Account) Loan {
-	arg := CreateLoanParams{
+func createRandomLoanTransfer(t *testing.T, account Account) LoanTransfer {
+	arg := CreateLoanTransferParams{
 		AccountID:    account.ID,
 		LoanAmount:   util.RandomMoney(),
 		InterestRate: 1.0,
@@ -19,7 +19,7 @@ func createRandomLoan(t *testing.T, account Account) Loan {
 		EndDate:      time.Now().Add(time.Minute),
 	}
 
-	loan, err := TestQueries.CreateLoan(context.Background(), arg)
+	loan, err := TestQueries.CreateLoanTransfer(context.Background(), arg)
 	require.NoError(t, err)
 	require.NotEmpty(t, loan)
 
@@ -35,16 +35,16 @@ func createRandomLoan(t *testing.T, account Account) Loan {
 	return loan
 }
 
-func TestCreateLoan(t *testing.T) {
+func TestCreateLoanTransfer(t *testing.T) {
 	account := createRandomAccount(t)
-	createRandomLoan(t, account)
+	createRandomLoanTransfer(t, account)
 }
 
-func TestGetLoan(t *testing.T) {
+func TestGetLoanTransfer(t *testing.T) {
 	account := createRandomAccount(t)
-	loan1 := createRandomLoan(t, account)
+	loan1 := createRandomLoanTransfer(t, account)
 
-	loan2, err := TestQueries.GetLoan(context.Background(), loan1.ID)
+	loan2, err := TestQueries.GetLoanTransfer(context.Background(), loan1.ID)
 	require.NoError(t, err)
 	require.NotEmpty(t, loan2)
 

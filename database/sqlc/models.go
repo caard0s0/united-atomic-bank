@@ -24,7 +24,7 @@ type Entry struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-type Loan struct {
+type LoanTransfer struct {
 	ID        int64 `json:"id"`
 	AccountID int64 `json:"account_id"`
 	// must be positive

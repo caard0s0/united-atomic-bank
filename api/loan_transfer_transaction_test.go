@@ -18,7 +18,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestTransferLoanAPI(t *testing.T) {
+func TestLoanTransferAPI(t *testing.T) {
 
 	user, _ := randomUser(t)
 	account := randomAccount(user.Username)
@@ -50,7 +50,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(1).
 					Return(account, nil)
 
-				arg := db.TransferLoanTransactionParams{
+				arg := db.CreateLoanTransferParams{
 					AccountID:    account.ID,
 					LoanAmount:   loanAmount,
 					InterestRate: interestRate,
@@ -59,7 +59,7 @@ func TestTransferLoanAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Eq(arg)).
+					LoanTransferTransaction(gomock.Any(), gomock.Eq(arg)).
 					Times(1)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -82,7 +82,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrNoRows)
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Any()).
+					LoanTransferTransaction(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -104,7 +104,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Any()).
+					LoanTransferTransaction(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -126,7 +126,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Any()).
+					LoanTransferTransaction(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -149,7 +149,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(account, nil)
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any, gomock.Any()).
+					LoanTransferTransaction(gomock.Any, gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -172,7 +172,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrConnDone)
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Any()).
+					LoanTransferTransaction(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -180,7 +180,7 @@ func TestTransferLoanAPI(t *testing.T) {
 			},
 		},
 		{
-			name: "TransferLoanTransactionError",
+			name: "LoanTransferTransactionError",
 			body: gin.H{
 				"account_id":  account.ID,
 				"loan_amount": loanAmount,
@@ -194,7 +194,7 @@ func TestTransferLoanAPI(t *testing.T) {
 					Times(1).
 					Return(account, nil)
 
-				arg := db.TransferLoanTransactionParams{
+				arg := db.CreateLoanTransferParams{
 					AccountID:    account.ID,
 					LoanAmount:   loanAmount,
 					InterestRate: interestRate,
@@ -203,9 +203,9 @@ func TestTransferLoanAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferLoanTransaction(gomock.Any(), gomock.Eq(arg)).
+					LoanTransferTransaction(gomock.Any(), gomock.Eq(arg)).
 					Times(1).
-					Return(db.TransferLoanTransactionResult{}, sql.ErrConnDone)
+					Return(db.LoanTransferTransactionResult{}, sql.ErrConnDone)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusInternalServerError, recorder.Code)

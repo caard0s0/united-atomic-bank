@@ -50,7 +50,7 @@ func (server *Server) setupRouter() {
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))
 
 	authRoutes.POST("/transfers", server.createTransfer)
-	authRoutes.POST("/loans", server.createLoan)
+	authRoutes.POST("/loans", server.createLoanTransfer)
 
 	authRoutes.POST("/accounts", server.createAccount)
 	authRoutes.GET("/accounts/:id", server.getAccount)

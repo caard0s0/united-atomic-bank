@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestTransferLoanTransaction(t *testing.T) {
+func TestLoanTransferTransaction(t *testing.T) {
 	store := NewStore(testDB)
 
 	account := createRandomAccount(t)
@@ -22,12 +22,12 @@ func TestTransferLoanTransaction(t *testing.T) {
 	status := "Active"
 
 	errs := make(chan error)
-	results := make(chan TransferLoanTransactionResult)
+	results := make(chan LoanTransferTransactionResult)
 
 	for i := 0; i < n; i++ {
 		go func() {
 			ctx := context.Background()
-			result, err := store.TransferLoanTransaction(ctx, TransferLoanTransactionParams{
+			result, err := store.LoanTransferTransaction(ctx, CreateLoanTransferParams{
 				AccountID:    account.ID,
 				LoanAmount:   amount,
 				InterestRate: interestRate,
@@ -59,7 +59,7 @@ func TestTransferLoanTransaction(t *testing.T) {
 		require.NotZero(t, loan.StartDate)
 		require.NotZero(t, loan.EndDate)
 
-		_, err = store.GetLoan(context.Background(), loan.ID)
+		_, err = store.GetLoanTransfer(context.Background(), loan.ID)
 		require.NoError(t, err)
 
 		// check entry

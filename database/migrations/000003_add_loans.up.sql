@@ -1,4 +1,4 @@
-CREATE TABLE "loans" (
+CREATE TABLE "loan_transfers" (
   "id" BIGSERIAL PRIMARY KEY,
   "account_id" BIGINT NOT NULL,
   "loan_amount" BIGINT NOT NULL,
@@ -8,10 +8,10 @@ CREATE TABLE "loans" (
   "end_date" TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
-CREATE INDEX ON "loans" ("account_id");
+CREATE INDEX ON "loan_transfers" ("account_id");
 
-COMMENT ON COLUMN "loans"."loan_amount" IS 'must be positive';
+COMMENT ON COLUMN "loan_transfers"."loan_amount" IS 'must be positive';
 
-COMMENT ON COLUMN "loans"."interest_rate" IS 'must be positive';
+COMMENT ON COLUMN "loan_transfers"."interest_rate" IS 'must be positive';
 
-ALTER TABLE "loans" ADD FOREIGN KEY ("account_id") REFERENCES "accounts" ("id");
+ALTER TABLE "loan_transfers" ADD FOREIGN KEY ("account_id") REFERENCES "accounts" ("id");

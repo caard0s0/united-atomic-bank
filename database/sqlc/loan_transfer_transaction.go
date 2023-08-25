@@ -5,31 +5,22 @@ import (
 	"time"
 )
 
-// TransferLoanTransactionParams contains the input parameters of the transfer loan
-type TransferLoanTransactionParams struct {
-	AccountID    int64     `json:"account_id"`
-	LoanAmount   int64     `json:"loan_amount"`
-	InterestRate int64     `json:"interest_rate"`
-	Status       string    `json:"status"`
-	EndDate      time.Time `json:"end_date"`
+// LoanTransferTransactionResult is the result of the transfer loan
+type LoanTransferTransactionResult struct {
+	Loan      LoanTransfer `json:"loan"`
+	ToAccount Account      `json:"to_account"`
+	ToEntry   Entry        `json:"to_entry"`
 }
 
-// TransferLoanTransactionResult is the result of the transfer loan
-type TransferLoanTransactionResult struct {
-	Loan      Loan    `json:"loan"`
-	ToAccount Account `json:"to_account"`
-	ToEntry   Entry   `json:"to_entry"`
-}
-
-// TransferLoanTransaction performs a money transfer to an account.
+// LoanTransferTransaction performs a money transfer to an account.
 // It creates a transfer record, add account entry, and update account balance within a single database transaction
-func (store *SQLStore) TransferLoanTransaction(ctx context.Context, arg TransferLoanTransactionParams) (TransferLoanTransactionResult, error) {
-	var result TransferLoanTransactionResult
+func (store *SQLStore) LoanTransferTransaction(ctx context.Context, arg CreateLoanTransferParams) (LoanTransferTransactionResult, error) {
+	var result LoanTransferTransactionResult
 
 	err := store.execTx(ctx, func(q *Queries) error {
 		var err error
 
-		result.Loan, err = q.CreateLoan(ctx, CreateLoanParams{
+		result.Loan, err = q.CreateLoanTransfer(ctx, CreateLoanTransferParams{
 			AccountID:    arg.AccountID,
 			LoanAmount:   arg.LoanAmount,
 			InterestRate: arg.InterestRate,
