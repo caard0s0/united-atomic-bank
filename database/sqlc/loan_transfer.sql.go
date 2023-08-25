@@ -7,52 +7,39 @@ package db
 
 import (
 	"context"
-	"time"
 )
 
 const createLoanTransfer = `-- name: CreateLoanTransfer :one
 INSERT INTO loan_transfers (
   account_id,
-  loan_amount,
-  interest_rate,
-  status,
-  end_date
+  amount
 ) VALUES (
-  $1, $2, $3, $4, $5
-) RETURNING id, account_id, loan_amount, interest_rate, status, start_date, end_date
+  $1, $2
+) RETURNING id, account_id, amount, interest_rate, open, start_at, end_at
 `
 
 type CreateLoanTransferParams struct {
-	AccountID    int64     `json:"account_id"`
-	LoanAmount   int64     `json:"loan_amount"`
-	InterestRate int64     `json:"interest_rate"`
-	Status       string    `json:"status"`
-	EndDate      time.Time `json:"end_date"`
+	AccountID int64 `json:"account_id"`
+	Amount    int64 `json:"amount"`
 }
 
 func (q *Queries) CreateLoanTransfer(ctx context.Context, arg CreateLoanTransferParams) (LoanTransfer, error) {
-	row := q.db.QueryRowContext(ctx, createLoanTransfer,
-		arg.AccountID,
-		arg.LoanAmount,
-		arg.InterestRate,
-		arg.Status,
-		arg.EndDate,
-	)
+	row := q.db.QueryRowContext(ctx, createLoanTransfer, arg.AccountID, arg.Amount)
 	var i LoanTransfer
 	err := row.Scan(
 		&i.ID,
 		&i.AccountID,
-		&i.LoanAmount,
+		&i.Amount,
 		&i.InterestRate,
-		&i.Status,
-		&i.StartDate,
-		&i.EndDate,
+		&i.Open,
+		&i.StartAt,
+		&i.EndAt,
 	)
 	return i, err
 }
 
 const getLoanTransfer = `-- name: GetLoanTransfer :one
-SELECT id, account_id, loan_amount, interest_rate, status, start_date, end_date FROM loan_transfers
+SELECT id, account_id, amount, interest_rate, open, start_at, end_at FROM loan_transfers
 WHERE id = $1 LIMIT 1
 `
 
@@ -62,11 +49,11 @@ func (q *Queries) GetLoanTransfer(ctx context.Context, id int64) (LoanTransfer, 
 	err := row.Scan(
 		&i.ID,
 		&i.AccountID,
-		&i.LoanAmount,
+		&i.Amount,
 		&i.InterestRate,
-		&i.Status,
-		&i.StartDate,
-		&i.EndDate,
+		&i.Open,
+		&i.StartAt,
+		&i.EndAt,
 	)
 	return i, err
 }

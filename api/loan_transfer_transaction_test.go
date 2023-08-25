@@ -19,14 +19,9 @@ import (
 )
 
 func TestLoanTransferAPI(t *testing.T) {
-
 	user, _ := randomUser(t)
 	account := randomAccount(user.Username)
-
-	loanAmount := int64(10)
-	interestRate := int64(1)
-	status := "Active"
-	endDate := time.Now().Add(time.Minute).Truncate(time.Second)
+	amount := int64(10)
 
 	testCases := []struct {
 		name          string
@@ -39,7 +34,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "OK",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -51,11 +46,8 @@ func TestLoanTransferAPI(t *testing.T) {
 					Return(account, nil)
 
 				arg := db.CreateLoanTransferParams{
-					AccountID:    account.ID,
-					LoanAmount:   loanAmount,
-					InterestRate: interestRate,
-					Status:       status,
-					EndDate:      endDate,
+					AccountID: account.ID,
+					Amount:    amount,
 				}
 
 				store.EXPECT().
@@ -70,7 +62,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "AccountNotFound",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -93,7 +85,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "InvalidID",
 			body: gin.H{
 				"account_id":  0,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -115,7 +107,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "NegativeAmount",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": -loanAmount,
+				"loan_amount": -amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -137,7 +129,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "UnauthorizedUser",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, "unauthorized_user", time.Minute)
@@ -160,7 +152,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "GetAccountError",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -183,7 +175,7 @@ func TestLoanTransferAPI(t *testing.T) {
 			name: "LoanTransferTransactionError",
 			body: gin.H{
 				"account_id":  account.ID,
-				"loan_amount": loanAmount,
+				"loan_amount": amount,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
@@ -195,11 +187,8 @@ func TestLoanTransferAPI(t *testing.T) {
 					Return(account, nil)
 
 				arg := db.CreateLoanTransferParams{
-					AccountID:    account.ID,
-					LoanAmount:   loanAmount,
-					InterestRate: interestRate,
-					Status:       status,
-					EndDate:      time.Now().Add(time.Minute).Truncate(time.Second),
+					AccountID: account.ID,
+					Amount:    amount,
 				}
 
 				store.EXPECT().
