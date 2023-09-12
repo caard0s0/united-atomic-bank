@@ -43,6 +43,7 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 
 func (server *Server) setupRouter() {
 	router := gin.Default()
+	router.Use(corsMiddleware(server.config.HttpClientAddress))
 
 	router.POST("/users", server.createUser)
 	router.POST("/users/login", server.loginUser)
@@ -59,9 +60,24 @@ func (server *Server) setupRouter() {
 	server.router = router
 }
 
+func corsMiddleware(clientAddress string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", clientAddress)
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+
+		c.Next()
+	}
+}
+
 // Start runs the HTTP server on a specific address.
-func (server *Server) Start(address string) error {
-	return server.router.Run(address)
+func (server *Server) Start(serverAddress string) error {
+	return server.router.Run(serverAddress)
 }
 
 func errorResponse(err error) gin.H {

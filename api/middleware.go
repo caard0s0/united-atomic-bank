@@ -1,11 +1,12 @@
 package api
 
 import (
-	"github.com/caard0s0/united-atomic-bank/token"
 	"errors"
 	"fmt"
 	"net/http"
 	"strings"
+
+	"github.com/caard0s0/united-atomic-bank/token"
 
 	"github.com/gin-gonic/gin"
 )
