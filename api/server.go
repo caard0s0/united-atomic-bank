@@ -3,9 +3,9 @@ package api
 import (
 	"fmt"
 
-	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
-	"github.com/caard0s0/united-atomic-bank/util"
+	db "github.com/caard0s0/united-atomic-bank-server/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/token"
+	"github.com/caard0s0/united-atomic-bank-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"

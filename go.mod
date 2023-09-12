@@ -1,4 +1,4 @@
-module github.com/caard0s0/united-atomic-bank
+module github.com/caard0s0/united-atomic-bank-server
 
 go 1.21
 

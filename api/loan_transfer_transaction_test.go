@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	mockdb "github.com/caard0s0/united-atomic-bank/database/mock"
-	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
+	mockdb "github.com/caard0s0/united-atomic-bank-server/database/mock"
+	db "github.com/caard0s0/united-atomic-bank-server/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/token"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"

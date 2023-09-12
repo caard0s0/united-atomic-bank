@@ -11,9 +11,9 @@ import (
 	"reflect"
 	"testing"
 
-	mockdb "github.com/caard0s0/united-atomic-bank/database/mock"
-	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank/util"
+	mockdb "github.com/caard0s0/united-atomic-bank-server/database/mock"
+	db "github.com/caard0s0/united-atomic-bank-server/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"

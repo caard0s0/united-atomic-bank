@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/caard0s0/united-atomic-bank/api"
-	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank-server/api"
+	db "github.com/caard0s0/united-atomic-bank-server/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/util"
 
 	_ "github.com/lib/pq"
 )

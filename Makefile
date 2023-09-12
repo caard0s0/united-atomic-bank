@@ -28,7 +28,7 @@ test:
 server:
 	go run main.go
 
-mock: 
-	mockgen -package mockdb -destination database/mock/store.go github.com/caard0s0/united-atomic-bank/database/sqlc Store
+mock:
+	mockgen -package mockdb -destination database/mock/store.go github.com/caard0s0/united-atomic-bank-server/database/sqlc Store
 
 _PHONY: postgres createdb dropdb migrateup migrateup1 migratedown migratedown1 sqlc server mock

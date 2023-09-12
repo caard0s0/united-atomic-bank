@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/caard0s0/united-atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank-server/util"
 
 	"github.com/go-playground/validator/v10"
 )

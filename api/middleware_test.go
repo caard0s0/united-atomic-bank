@@ -1,7 +1,7 @@
 package api
 
 import (
-	"github.com/caard0s0/united-atomic-bank/token"
+	"github.com/caard0s0/united-atomic-bank-server/token"
 	"fmt"
 	"net/http"
 	"net/http/httptest"

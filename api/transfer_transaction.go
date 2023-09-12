@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/http"
 
-	db "github.com/caard0s0/united-atomic-bank/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank/token"
+	db "github.com/caard0s0/united-atomic-bank-server/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/token"
 
 	"github.com/gin-gonic/gin"
 )

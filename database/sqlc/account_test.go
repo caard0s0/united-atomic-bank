@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/caard0s0/united-atomic-bank/util"
+	"github.com/caard0s0/united-atomic-bank-server/util"
 
 	"github.com/stretchr/testify/require"
 )
