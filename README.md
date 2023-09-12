@@ -85,6 +85,7 @@ A Financial Software specialized in the intermediation of money between savers a
     DB_DRIVER=postgres
     DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable
     HTTP_SERVER_ADDRESS=0.0.0.0:8080
+    HTTP_CLIENT_ADDRESS=http://localhost:3000
 
     TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
     ACCESS_TOKEN_DURATION=15m
