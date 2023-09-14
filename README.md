@@ -105,7 +105,7 @@ A Financial Software specialized in the intermediation of money between savers a
         <strong>WARNING:</strong> This PATH below is just an example.
 
         ```bash
-        export PATH=$PATH:~/.asdf/installs/golang/1.21.0/packages/bin
+        export PATH=$PATH:~/.asdf/installs/golang/1.21.1/packages/bin
         ```
 
 5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
