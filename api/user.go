@@ -115,7 +115,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 	}
 
-	ctx.SetCookie("accessToken", accessToken, 60, "/", "localhost", false, true)
+	ctx.SetCookie("accessToken", accessToken, 60*15, "/", "localhost", false, true)
 
 	rsp := loginUserResponse{
 		AccessToken: accessToken,
