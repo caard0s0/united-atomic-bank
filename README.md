@@ -2,13 +2,13 @@
 
 
 <!-- CI Badge -->
-<a href="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml">
-    <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+<a href="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/ci.yml">
+    <img src="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
 <!-- Build & Publish Docker Badge -->
-<a href="https://github.com/caard0s0/united-atomic-bank/actions/workflows/deploy.yml">
-    <img src="https://github.com/caard0s0/united-atomic-bank/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Build Status">
+<a href="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/deploy.yml">
+    <img src="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
 &nbsp;
@@ -18,11 +18,11 @@
 <div align="center">
     <h2>United Atomic - API Server</h2>
     <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Go</a>.</p>
-    <a href="https://github.com/caard0s0/united-atomic-bank/issues">Report Bugs</a>
+    <a href="https://github.com/caard0s0/united-atomic-bank-server/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/united-atomic-bank/actions">Actions</a>
+    <a href="https://github.com/caard0s0/united-atomic-bank-server/actions">Actions</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/united-atomic-bank/pulls">Pull Requests</a>
+    <a href="https://github.com/caard0s0/united-atomic-bank-server/pulls">Pull Requests</a>
 </div>
 
 &nbsp;
@@ -71,7 +71,7 @@ A Financial Software specialized in the intermediation of money between savers a
 
 1. Clone the repository.
     ```bash
-    git clone https://github.com/caard0s0/united-atomic-bank.git
+    git clone https://github.com/caard0s0/united-atomic-bank-server.git
     ```
 
 2. Install <strong>Golang-Migrate</strong> as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.

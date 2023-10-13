@@ -43,7 +43,7 @@ func NewServer(config util.Config, store db.Store) (*Server, error) {
 
 func (server *Server) setupRouter() {
 	router := gin.Default()
-	router.Use(corsMiddleware(server.config.HttpClientAddress))
+	router.Use(CORSMiddleware(server.config.HttpClientAddress))
 
 	router.POST("/users", server.createUser)
 	router.POST("/users/login", server.loginUser)
@@ -60,7 +60,7 @@ func (server *Server) setupRouter() {
 	server.router = router
 }
 
-func corsMiddleware(clientAddress string) gin.HandlerFunc {
+func CORSMiddleware(clientAddress string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", clientAddress)
 		c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE")
