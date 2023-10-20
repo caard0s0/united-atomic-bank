@@ -37,9 +37,11 @@ type LoanTransfer struct {
 }
 
 type Transfer struct {
-	ID            int64 `json:"id"`
-	FromAccountID int64 `json:"from_account_id"`
-	ToAccountID   int64 `json:"to_account_id"`
+	ID               int64  `json:"id"`
+	FromAccountID    int64  `json:"from_account_id"`
+	FromAccountOwner string `json:"from_account_owner"`
+	ToAccountID      int64  `json:"to_account_id"`
+	ToAccountOwner   string `json:"to_account_owner"`
 	// must be positive
 	Amount    int64     `json:"amount"`
 	CreatedAt time.Time `json:"created_at"`

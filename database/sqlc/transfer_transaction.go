@@ -20,9 +20,11 @@ func (store *SQLStore) TransferTransaction(ctx context.Context, arg CreateTransf
 		var err error
 
 		result.Transfer, err = q.CreateTransfer(ctx, CreateTransferParams{
-			FromAccountID: arg.FromAccountID,
-			ToAccountID:   arg.ToAccountID,
-			Amount:        arg.Amount,
+			FromAccountID:    arg.FromAccountID,
+			FromAccountOwner: arg.FromAccountOwner,
+			ToAccountID:      arg.ToAccountID,
+			ToAccountOwner:   arg.ToAccountOwner,
+			Amount:           arg.Amount,
 		})
 		if err != nil {
 			return err

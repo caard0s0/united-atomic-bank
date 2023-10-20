@@ -12,9 +12,11 @@ import (
 
 func createRandomTransfer(t *testing.T, account1, account2 Account) Transfer {
 	arg := CreateTransferParams{
-		FromAccountID: account1.ID,
-		ToAccountID:   account2.ID,
-		Amount:        util.RandomMoney(),
+		FromAccountID:    account1.ID,
+		FromAccountOwner: account1.Owner,
+		ToAccountID:      account2.ID,
+		ToAccountOwner:   account2.Owner,
+		Amount:           util.RandomMoney(),
 	}
 
 	transfer, err := TestQueries.CreateTransfer(context.Background(), arg)
@@ -63,10 +65,10 @@ func TestListTransfer(t *testing.T) {
 	}
 
 	arg := ListTransfersParams{
-		FromAccountID: account1.ID,
-		ToAccountID:   account1.ID,
-		Limit:         5,
-		Offset:        5,
+		FromAccountOwner: account1.Owner,
+		ToAccountOwner:   account1.Owner,
+		Limit:            5,
+		Offset:           5,
 	}
 
 	transfers, err := TestQueries.ListTransfers(context.Background(), arg)

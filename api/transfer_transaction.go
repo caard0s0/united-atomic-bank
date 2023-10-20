@@ -13,10 +13,12 @@ import (
 )
 
 type TransferTransactionRequest struct {
-	FromAccountID int64  `json:"from_account_id" binding:"required,min=1"`
-	ToAccountID   int64  `json:"to_account_id" binding:"required,min=1"`
-	Amount        int64  `json:"amount" binding:"required,gt=0"`
-	Currency      string `json:"currency" binding:"required,currency"`
+	FromAccountID    int64  `json:"from_account_id" binding:"required,min=1"`
+	FromAccountOwner string `json:"from_account_owner" binding:"required"`
+	ToAccountID      int64  `json:"to_account_id" binding:"required,min=1"`
+	ToAccountOwner   string `json:"to_account_owner" binding:"required"`
+	Amount           int64  `json:"amount" binding:"required,gt=0"`
+	Currency         string `json:"currency" binding:"required,currency"`
 }
 
 func (server *Server) createTransfer(ctx *gin.Context) {
@@ -44,9 +46,11 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 	}
 
 	arg := db.CreateTransferParams{
-		FromAccountID: req.FromAccountID,
-		ToAccountID:   req.ToAccountID,
-		Amount:        req.Amount,
+		FromAccountID:    req.FromAccountID,
+		FromAccountOwner: req.FromAccountOwner,
+		ToAccountID:      req.ToAccountID,
+		ToAccountOwner:   req.ToAccountOwner,
+		Amount:           req.Amount,
 	}
 
 	result, err := server.store.TransferTransaction(ctx, arg)
@@ -76,4 +80,33 @@ func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency s
 	}
 
 	return account, true
+}
+
+type listTransferRequest struct {
+	PageID   int32 `form:"page_id" binding:"required,min=1"`
+	PageSize int32 `form:"page_size" binding:"required,min=5,max=50"`
+}
+
+func (server *Server) listTransfers(ctx *gin.Context) {
+	var req listTransferRequest
+	if err := ctx.ShouldBindQuery(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		return
+	}
+
+	authPayload := ctx.MustGet(authorizationPayloadKey).(*token.Payload)
+	arg := db.ListTransfersParams{
+		FromAccountOwner: authPayload.Username,
+		ToAccountOwner:   authPayload.Username,
+		Limit:            req.PageSize,
+		Offset:           (req.PageID - 1) * req.PageSize,
+	}
+
+	transfers, err := server.store.ListTransfers(ctx, arg)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, transfers)
 }

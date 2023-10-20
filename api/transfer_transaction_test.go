@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"database/sql"
 	"encoding/json"
+	"fmt"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -44,10 +46,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "OK",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -64,9 +68,11 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Return(account2, nil)
 
 				arg := db.CreateTransferParams{
-					FromAccountID: account1.ID,
-					ToAccountID:   account2.ID,
-					Amount:        amount,
+					FromAccountID:    account1.ID,
+					FromAccountOwner: account1.Owner,
+					ToAccountID:      account2.ID,
+					ToAccountOwner:   account2.Owner,
+					Amount:           amount,
 				}
 
 				store.EXPECT().
@@ -80,10 +86,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "FromAccountNotFound",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -109,10 +117,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "ToAccountNotFound",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -139,10 +149,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "FromAccountInvalidID",
 			body: gin.H{
-				"from_account_id": 0,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    0,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -163,10 +175,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "ToAccountInvalidID",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   0,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      0,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -187,10 +201,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "UnauthorizedUser",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, "unauthorized_user", time.Minute)
@@ -216,10 +232,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "FromAccountMismatch",
 			body: gin.H{
-				"from_account_id": account3.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account3.ID,
+				"from_account_owner": account3.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user3.Username, time.Minute)
@@ -245,10 +263,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "ToAccountMismatch",
 			body: gin.H{
-				"from_account_id": account2.ID,
-				"to_account_id":   account3.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account2.ID,
+				"from_account_owner": account2.Owner,
+				"to_account_id":      account3.ID,
+				"to_account_owner":   account3.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user2.Username, time.Minute)
@@ -275,10 +295,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "InvalidCurrency",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        "RUB",
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           "RUB",
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -299,10 +321,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "NegativeAmount",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          -amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             -amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -323,10 +347,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "GetAccountError",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -348,10 +374,12 @@ func TestTransferMoneyAPI(t *testing.T) {
 		{
 			name: "TransferTransactionError",
 			body: gin.H{
-				"from_account_id": account1.ID,
-				"to_account_id":   account2.ID,
-				"amount":          amount,
-				"currency":        util.USD,
+				"from_account_id":    account1.ID,
+				"from_account_owner": account1.Owner,
+				"to_account_id":      account2.ID,
+				"to_account_owner":   account2.Owner,
+				"amount":             amount,
+				"currency":           util.USD,
 			},
 			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
 				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user1.Username, time.Minute)
@@ -368,9 +396,11 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Return(account2, nil)
 
 				arg := db.CreateTransferParams{
-					FromAccountID: account1.ID,
-					ToAccountID:   account2.ID,
-					Amount:        amount,
+					FromAccountID:    account1.ID,
+					FromAccountOwner: account1.Owner,
+					ToAccountID:      account2.ID,
+					ToAccountOwner:   account2.Owner,
+					Amount:           amount,
 				}
 
 				store.EXPECT().
@@ -409,4 +439,195 @@ func TestTransferMoneyAPI(t *testing.T) {
 			tc.checkResponse(t, recorder)
 		})
 	}
+}
+
+func TestListTransfersAPI(t *testing.T) {
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
+
+	n := 5
+	transfers := make([]db.Transfer, n)
+	for i := 0; i < n; i++ {
+		transfers[i] = randomTransfer(account.Owner)
+	}
+
+	type Query struct {
+		PageID   int
+		PageSize int
+	}
+
+	testCases := []struct {
+		name          string
+		query         Query
+		setupAuth     func(t *testing.T, request *http.Request, tokenMaker token.Maker)
+		buildStubs    func(store *mockdb.MockStore)
+		checkResponse func(recorder *httptest.ResponseRecorder)
+	}{
+		{
+			name: "OK",
+			query: Query{
+				PageID:   1,
+				PageSize: n,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
+				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
+			},
+			buildStubs: func(store *mockdb.MockStore) {
+				arg := db.ListTransfersParams{
+					FromAccountOwner: account.Owner,
+					ToAccountOwner:   account.Owner,
+					Limit:            int32(n),
+					Offset:           0,
+				}
+
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Eq(arg)).
+					Times(1).
+					Return(transfers, nil)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusOK, recorder.Code)
+				requireBodyMatchTransfers(t, recorder.Body, transfers)
+			},
+		},
+		{
+			name: "InvalidPageID",
+			query: Query{
+				PageID:   -1,
+				PageSize: n,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
+				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
+			},
+			buildStubs: func(store *mockdb.MockStore) {
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Any()).
+					Times(0)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "InvalidPageSize",
+			query: Query{
+				PageID:   1,
+				PageSize: 100000,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
+				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
+			},
+			buildStubs: func(store *mockdb.MockStore) {
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Any()).
+					Times(0)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusBadRequest, recorder.Code)
+			},
+		},
+		{
+			name: "ExpiredToken",
+			query: Query{
+				PageID:   1,
+				PageSize: n,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
+				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, -time.Minute)
+			},
+			buildStubs: func(store *mockdb.MockStore) {
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Any()).
+					Times(0)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusUnauthorized, recorder.Code)
+			},
+		},
+		{
+			name: "NoAuthorization",
+			query: Query{
+				PageID:   1,
+				PageSize: n,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {},
+			buildStubs: func(store *mockdb.MockStore) {
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Any()).
+					Times(0)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusUnauthorized, recorder.Code)
+			},
+		},
+		{
+			name: "InternalError",
+			query: Query{
+				PageID:   1,
+				PageSize: n,
+			},
+			setupAuth: func(t *testing.T, request *http.Request, tokenMaker token.Maker) {
+				addAuthorization(t, request, tokenMaker, authorizationTypeBearer, user.Username, time.Minute)
+			},
+			buildStubs: func(store *mockdb.MockStore) {
+				store.EXPECT().
+					ListTransfers(gomock.Any(), gomock.Any()).
+					Times(1).
+					Return([]db.Transfer{}, sql.ErrConnDone)
+			},
+			checkResponse: func(recorder *httptest.ResponseRecorder) {
+				require.Equal(t, http.StatusInternalServerError, recorder.Code)
+			},
+		},
+	}
+
+	for i := range testCases {
+		tc := testCases[i]
+
+		t.Run(tc.name, func(t *testing.T) {
+			ctrl := gomock.NewController(t)
+			defer ctrl.Finish()
+
+			store := mockdb.NewMockStore(ctrl)
+			tc.buildStubs(store)
+
+			server := newTestServer(t, store)
+			recorder := httptest.NewRecorder()
+
+			url := "/transfers"
+			request, err := http.NewRequest(http.MethodGet, url, nil)
+			require.NoError(t, err)
+
+			// Add query parameters to request URL
+			q := request.URL.Query()
+			q.Add("page_id", fmt.Sprintf("%d", tc.query.PageID))
+			q.Add("page_size", fmt.Sprintf("%d", tc.query.PageSize))
+			request.URL.RawQuery = q.Encode()
+
+			tc.setupAuth(t, request, server.tokenMaker)
+			server.router.ServeHTTP(recorder, request)
+			tc.checkResponse(recorder)
+		})
+	}
+}
+
+func randomTransfer(owner string) db.Transfer {
+	return db.Transfer{
+		ID:               util.RandomInt(1, 1000),
+		FromAccountID:    util.RandomInt(1, 1000),
+		FromAccountOwner: owner,
+		ToAccountID:      util.RandomInt(1, 1000),
+		ToAccountOwner:   owner,
+		Amount:           util.RandomMoney(),
+	}
+}
+
+func requireBodyMatchTransfers(t *testing.T, body *bytes.Buffer, transfers []db.Transfer) {
+	data, err := io.ReadAll(body)
+	require.NoError(t, err)
+
+	var gotTransfers []db.Transfer
+	err = json.Unmarshal(data, &gotTransfers)
+	require.NoError(t, err)
+	require.Equal(t, transfers, gotTransfers)
 }
