@@ -26,9 +26,11 @@ func TestTransferTransaction(t *testing.T) {
 		go func() {
 			ctx := context.Background()
 			result, err := store.TransferTransaction(ctx, CreateTransferParams{
-				FromAccountID: account1.ID,
-				ToAccountID:   account2.ID,
-				Amount:        amount,
+				FromAccountID:    account1.ID,
+				FromAccountOwner: account1.Owner,
+				ToAccountID:      account2.ID,
+				ToAccountOwner:   account2.Owner,
+				Amount:           amount,
 			})
 
 			errs <- err
@@ -50,7 +52,9 @@ func TestTransferTransaction(t *testing.T) {
 		transfer := result.Transfer
 		require.NotEmpty(t, transfer)
 		require.Equal(t, account1.ID, transfer.FromAccountID)
+		require.Equal(t, account1.Owner, transfer.FromAccountOwner)
 		require.Equal(t, account2.ID, transfer.ToAccountID)
+		require.Equal(t, account2.Owner, transfer.ToAccountOwner)
 		require.Equal(t, amount, transfer.Amount)
 		require.NotZero(t, transfer.ID)
 		require.NotZero(t, transfer.CreatedAt)
@@ -129,7 +133,9 @@ func TestTransferTransactionDeadLock(t *testing.T) {
 
 	for i := 0; i < n; i++ {
 		fromAccountID := account1.ID
+		FromAccountOwner := account1.Owner
 		toAccountID := account2.ID
+		toAccountOwner := account2.Owner
 
 		if i%2 == 1 {
 			fromAccountID = account2.ID
@@ -139,9 +145,11 @@ func TestTransferTransactionDeadLock(t *testing.T) {
 		go func() {
 			ctx := context.Background()
 			_, err := store.TransferTransaction(ctx, CreateTransferParams{
-				FromAccountID: fromAccountID,
-				ToAccountID:   toAccountID,
-				Amount:        amount,
+				FromAccountID:    fromAccountID,
+				FromAccountOwner: FromAccountOwner,
+				ToAccountID:      toAccountID,
+				ToAccountOwner:   toAccountOwner,
+				Amount:           amount,
 			})
 
 			errs <- err
