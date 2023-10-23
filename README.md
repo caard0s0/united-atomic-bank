@@ -16,7 +16,7 @@
 
 <!-- About the Project -->
 <div align="center">
-    <h2>United Atomic - API Server</h2>
+    <h2>UAB - API Server</h2>
     <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Go</a>.</p>
     <a href="https://github.com/caard0s0/united-atomic-bank-server/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
@@ -109,6 +109,10 @@ A Financial Software specialized in the intermediation of money between savers a
         ```
 
 5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.
+
+<strong>WARNING:</strong> To install and use the <strong>Full Application</strong>, click on the <strong>Link</strong> below.
+
+4. Install the <strong>Client Side</strong>. for more information visit <a href="https://github.com/caard0s0/united-atomic-bank-client">UAB - Web Version</a>.
 
 
 <!-- Usage -->
