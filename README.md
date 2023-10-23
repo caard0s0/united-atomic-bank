@@ -112,7 +112,7 @@ A Financial Software specialized in the intermediation of money between savers a
 
 <strong>WARNING:</strong> To install and use the <strong>Full Application</strong>, click on the <strong>Link</strong> below.
 
-4. Install the <strong>Client Side</strong>. for more information visit <a href="https://github.com/caard0s0/united-atomic-bank-client">UAB - Web Version</a>.
+6. Install the <strong>Client Side</strong>. for more information visit <a href="https://github.com/caard0s0/united-atomic-bank-client">UAB - Web Version</a>.
 
 
 <!-- Usage -->
