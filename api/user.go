@@ -115,7 +115,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 	}
 
-	ctx.SetCookie("accessToken", accessToken, 60*30, "/", ".unitedatomicbank.com", true, true)
+	util.SetCookie(ctx, accessToken)
 
 	rsp := loginUserResponse{
 		AccessToken: accessToken,
