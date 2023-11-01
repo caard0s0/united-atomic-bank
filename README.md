@@ -83,7 +83,7 @@ A Financial Software specialized in the intermediation of money between savers a
     ```bash
     cat > app.env << EOF
     DB_DRIVER=postgres
-    DB_SOURCE=postgresql://root:secret@localhost:5432/bank?sslmode=disable
+    DB_SOURCE=postgresql://root:secret@postgres:5432/bank?sslmode=disable
     HTTP_SERVER_ADDRESS=0.0.0.0:8080
     HTTP_CLIENT_ADDRESS=http://localhost:3000
 
