@@ -21,6 +21,17 @@ type TransferTransactionRequest struct {
 	Currency         string `json:"currency" binding:"required,currency"`
 }
 
+// CreateTransfer
+//
+//	@Summary		Create a transfer
+//	@Description	Create a transfer.
+//	@Tags			transfers
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			_	formData	api.TransferTransactionRequest	true	"_"
+//	@Success		201	{object}	db.TransferTransactionResult
+//	@Router			/transfers [POST]
 func (server *Server) createTransfer(ctx *gin.Context) {
 	var req TransferTransactionRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -87,6 +98,18 @@ type listTransferRequest struct {
 	PageSize int32 `form:"page_size" binding:"required,min=5,max=50"`
 }
 
+// ListTransfers
+//
+//	@Summary		List transfers
+//	@Description	List transfers.
+//	@Tags			transfers
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			page_id		query	int	true	"Page ID"	minimum(1)
+//	@Param			page_size	query	int	true	"Page Size"	minimum(5)	maximum(10)
+//	@Success		200			{array}	db.Transfer
+//	@Router			/transfers [GET]
 func (server *Server) listTransfers(ctx *gin.Context) {
 	var req listTransferRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {

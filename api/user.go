@@ -37,6 +37,17 @@ func newUserResponse(user db.User) userResponse {
 	}
 }
 
+// CreateUser
+//
+//	@Summary		Create an user
+//	@Description	Create an user.
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			_	formData	api.createUserRequest	true	"_"
+//	@Success		201	{object}	db.User
+//	@Failure		400	"User already exists!"
+//	@Router			/users [POST]
 func (server *Server) createUser(ctx *gin.Context) {
 	var req createUserRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -84,6 +95,17 @@ type loginUserResponse struct {
 	User        userResponse `json:"user"`
 }
 
+// LoginUser
+//
+//	@Summary		Login an user
+//	@Description	Login an user.
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			_	formData	api.loginUserRequest	true	"_"
+//	@Success		200	{object}	api.loginUserResponse
+//	@Failure		400	"Username or password incorrect!"
+//	@Router			/users/login [POST]
 func (server *Server) loginUser(ctx *gin.Context) {
 	var req loginUserRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {

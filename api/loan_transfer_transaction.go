@@ -16,6 +16,17 @@ type LoanTransferTransactionRequest struct {
 	Amount    int64 `json:"amount" binding:"required,gt=0"`
 }
 
+// CreateLoanTransfer
+//
+//	@Summary		Create a loan
+//	@Description	Create a loan.
+//	@Tags			loans
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			_	formData	api.LoanTransferTransactionRequest	true	"_"
+//	@Success		201	{object}	db.LoanTransferTransactionResult
+//	@Router			/loans [POST]
 func (server *Server) createLoanTransfer(ctx *gin.Context) {
 	var req LoanTransferTransactionRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {

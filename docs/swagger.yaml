@@ -1,0 +1,380 @@
+definitions:
+  api.loginUserResponse:
+    properties:
+      access_token:
+        type: string
+      user:
+        $ref: '#/definitions/api.userResponse'
+    type: object
+  api.userResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      password_changed_at:
+        type: string
+      username:
+        type: string
+    type: object
+  db.Account:
+    properties:
+      balance:
+        type: integer
+      created_at:
+        type: string
+      currency:
+        type: string
+      id:
+        type: integer
+      owner:
+        type: string
+    type: object
+  db.Entry:
+    properties:
+      account_id:
+        type: integer
+      amount:
+        description: can be negative or positive
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+    type: object
+  db.LoanTransfer:
+    properties:
+      account_id:
+        type: integer
+      amount:
+        description: must be positive
+        type: integer
+      end_at:
+        type: string
+      id:
+        type: integer
+      interest_rate:
+        description: must be positive
+        type: string
+      open:
+        type: boolean
+      start_at:
+        type: string
+    type: object
+  db.LoanTransferTransactionResult:
+    properties:
+      loan:
+        $ref: '#/definitions/db.LoanTransfer'
+      to_account:
+        $ref: '#/definitions/db.Account'
+      to_entry:
+        $ref: '#/definitions/db.Entry'
+    type: object
+  db.Transfer:
+    properties:
+      amount:
+        description: must be positive
+        type: integer
+      created_at:
+        type: string
+      from_account_id:
+        type: integer
+      from_account_owner:
+        type: string
+      id:
+        type: integer
+      to_account_id:
+        type: integer
+      to_account_owner:
+        type: string
+    type: object
+  db.TransferTransactionResult:
+    properties:
+      from_account:
+        $ref: '#/definitions/db.Account'
+      from_entry:
+        $ref: '#/definitions/db.Entry'
+      to_account:
+        $ref: '#/definitions/db.Account'
+      to_entry:
+        $ref: '#/definitions/db.Entry'
+      transfer:
+        $ref: '#/definitions/db.Transfer'
+    type: object
+  db.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      full_name:
+        type: string
+      hashed_password:
+        type: string
+      password_changed_at:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact:
+    email: cardoso.business.ctt@gmail.com
+  description: This is the United Atomic Bank API. All features available in this
+    application are documented below.
+  title: United Atomic Bank API Documentation
+  version: 1.0.0
+paths:
+  /accounts:
+    get:
+      consumes:
+      - application/json
+      description: List accounts.
+      parameters:
+      - description: Page ID
+        in: query
+        minimum: 1
+        name: page_id
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 10
+        minimum: 5
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.Account'
+            type: array
+      security:
+      - BearerAuth: []
+      summary: List accounts
+      tags:
+      - accounts
+    post:
+      consumes:
+      - application/json
+      description: Create an account. The client must create and log in a user before.
+      parameters:
+      - in: formData
+        name: currency
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/db.Account'
+        "400":
+          description: Account already exists!
+        "401":
+          description: Unauthorized user!
+      security:
+      - BearerAuth: []
+      summary: Create an account
+      tags:
+      - accounts
+  /accounts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get an account.
+      parameters:
+      - description: Account ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/db.Account'
+      security:
+      - BearerAuth: []
+      summary: Get an account
+      tags:
+      - accounts
+  /loans:
+    post:
+      consumes:
+      - application/json
+      description: Create a loan.
+      parameters:
+      - in: formData
+        minimum: 1
+        name: account_id
+        required: true
+        type: integer
+      - in: formData
+        name: amount
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/db.LoanTransferTransactionResult'
+      security:
+      - BearerAuth: []
+      summary: Create a loan
+      tags:
+      - loans
+  /transfers:
+    get:
+      consumes:
+      - application/json
+      description: List transfers.
+      parameters:
+      - description: Page ID
+        in: query
+        minimum: 1
+        name: page_id
+        required: true
+        type: integer
+      - description: Page Size
+        in: query
+        maximum: 10
+        minimum: 5
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/db.Transfer'
+            type: array
+      security:
+      - BearerAuth: []
+      summary: List transfers
+      tags:
+      - transfers
+    post:
+      consumes:
+      - application/json
+      description: Create a transfer.
+      parameters:
+      - in: formData
+        name: amount
+        required: true
+        type: integer
+      - in: formData
+        name: currency
+        required: true
+        type: string
+      - in: formData
+        minimum: 1
+        name: from_account_id
+        required: true
+        type: integer
+      - in: formData
+        name: from_account_owner
+        required: true
+        type: string
+      - in: formData
+        minimum: 1
+        name: to_account_id
+        required: true
+        type: integer
+      - in: formData
+        name: to_account_owner
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/db.TransferTransactionResult'
+      security:
+      - BearerAuth: []
+      summary: Create a transfer
+      tags:
+      - transfers
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Create an user.
+      parameters:
+      - in: formData
+        name: email
+        required: true
+        type: string
+      - in: formData
+        name: full_name
+        required: true
+        type: string
+      - in: formData
+        minLength: 6
+        name: password
+        required: true
+        type: string
+      - in: formData
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/db.User'
+        "400":
+          description: User already exists!
+      summary: Create an user
+      tags:
+      - users
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login an user.
+      parameters:
+      - in: formData
+        minLength: 6
+        name: password
+        required: true
+        type: string
+      - in: formData
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.loginUserResponse'
+        "400":
+          description: Username or password incorrect!
+      summary: Login an user
+      tags:
+      - users
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

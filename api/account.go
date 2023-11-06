@@ -10,12 +10,27 @@ import (
 	"github.com/lib/pq"
 
 	"github.com/gin-gonic/gin"
+	_ "github.com/swaggo/swag/example/celler/httputil"
+	_ "github.com/swaggo/swag/example/celler/model"
 )
 
 type createAccountRequest struct {
 	Currency string `json:"currency" binding:"required,currency"`
 }
 
+// CreateAccount all operations for accounts
+//
+//	@Summary		Create an account
+//	@Description	Create an account. The client must create and log in a user before.
+//	@Tags			accounts
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			_	formData	api.createAccountRequest	true	"_"
+//	@Success		201	{object}	db.Account
+//	@Failure		400	"Account already exists!"
+//	@Failure		401	"Unauthorized user!"
+//	@Router			/accounts [POST]
 func (server *Server) createAccount(ctx *gin.Context) {
 	var req createAccountRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
@@ -50,6 +65,17 @@ type getAccountRequest struct {
 	ID int64 `uri:"id" binding:"required,min=1"`
 }
 
+// GetAccount
+//
+//	@Summary		Get an account
+//	@Description	Get an account.
+//	@Tags			accounts
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			id	path		int	true	"Account ID"
+//	@Success		200	{object}	db.Account
+//	@Router			/accounts/{id} [GET]
 func (server *Server) getAccount(ctx *gin.Context) {
 	var req getAccountRequest
 	if err := ctx.ShouldBindUri(&req); err != nil {
@@ -82,6 +108,18 @@ type listAccountRequest struct {
 	PageSize int32 `form:"page_size" binding:"required,min=5,max=10"`
 }
 
+// ListAccounts
+//
+//	@Summary		List accounts
+//	@Description	List accounts.
+//	@Tags			accounts
+//	@Accept			json
+//	@Produce		json
+//	@Security		BearerAuth
+//	@Param			page_id		query	int	true	"Page ID"	minimum(1)
+//	@Param			page_size	query	int	true	"Page Size"	minimum(5)	maximum(10)
+//	@Success		200			{array}	db.Account
+//	@Router			/accounts [GET]
 func (server *Server) listAccounts(ctx *gin.Context) {
 	var req listAccountRequest
 	if err := ctx.ShouldBindQuery(&req); err != nil {
