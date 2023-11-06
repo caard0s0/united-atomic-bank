@@ -145,7 +145,7 @@ A Financial Software specialized in the intermediation of money between savers a
 <!-- API Documentation -->
 <h2 id="api-documentation">API Documentation</h2>
 
-<p>A complete and detailed documentation of the API using Swagger. To view, visit <a href="https://api.unitedatomicbank.com/docs/index.html#/">API Documentation</a>.</p>
+<p>A complete and detailed documentation of the API using <strong>Swagger</strong>. To view, visit <a href="https://api.unitedatomicbank.com/docs/index.html#/">API Documentation</a>.</p>
 
 ![swagger_docs](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/d6017510-b63b-43b8-9494-43a449b4a663)
 
