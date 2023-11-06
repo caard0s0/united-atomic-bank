@@ -48,6 +48,7 @@ A Financial Software specialized in the intermediation of money between savers a
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="#tests">Tests</a></li>
+                <li><a href="#api-documentation">API Documentation</a></li>
             </ul>
         </li>
         <li><a href="#license">License</a></li>
@@ -141,6 +142,14 @@ A Financial Software specialized in the intermediation of money between savers a
 
 <br>
 
+<!-- API Documentation -->
+<h2 id="api-documentation">API Documentation</h2>
+
+<p>A complete and detailed documentation of the API using Swagger. To view, visit <a href="https://api.unitedatomicbank.com/docs/index.html#/">API Documentation</a>.</p>
+
+<br>
+
+
 <!-- License -->
 <h2 id="license">License</h2>
 
@@ -148,6 +157,7 @@ This project is being distributed under the <strong>MIT License</strong>, see ``
 
 
 <br>
+
 
 <!-- Contact -->
 <h2 id="contact">Contact</h2>
