@@ -347,7 +347,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/db.User"
+                            "$ref": "#/definitions/api.userResponse"
                         }
                     },
                     "400": {
@@ -554,29 +554,6 @@ const docTemplate = `{
                 },
                 "transfer": {
                     "$ref": "#/definitions/db.Transfer"
-                }
-            }
-        },
-        "db.User": {
-            "type": "object",
-            "properties": {
-                "created_at": {
-                    "type": "string"
-                },
-                "email": {
-                    "type": "string"
-                },
-                "full_name": {
-                    "type": "string"
-                },
-                "hashed_password": {
-                    "type": "string"
-                },
-                "password_changed_at": {
-                    "type": "string"
-                },
-                "username": {
-                    "type": "string"
                 }
             }
         }

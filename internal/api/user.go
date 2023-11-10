@@ -45,7 +45,7 @@ func newUserResponse(user db.User) userResponse {
 //	@Accept			json
 //	@Produce		json
 //	@Param			_	formData	api.createUserRequest	true	"_"
-//	@Success		201	{object}	db.User
+//	@Success		201	{object}	api.userResponse
 //	@Failure		400	"User already exists!"
 //	@Router			/users [POST]
 func (server *Server) createUser(ctx *gin.Context) {
