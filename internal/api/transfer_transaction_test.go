@@ -67,6 +67,11 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(1).
 					Return(account2, nil)
 
+				store.EXPECT().
+					GetUser(gomock.Any(), gomock.Eq(user1.Username)).
+					Times(1).
+					Return(user1, nil)
+
 				arg := db.CreateTransferParams{
 					FromAccountID:    account1.ID,
 					FromAccountOwner: account1.Owner,

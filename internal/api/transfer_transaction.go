@@ -73,7 +73,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusCreated, result)
 
-	userEmail := server.getUserEmail(ctx, result.FromAccount.Owner)
+	userEmail := server.getUserEmail(ctx, req.FromAccountOwner)
 	mail.SendTransferMail(result.Transfer.FromAccountOwner, result.Transfer.ToAccountOwner, result.Transfer.Amount, userEmail.Email, result.FromAccount.Currency)
 }
 
