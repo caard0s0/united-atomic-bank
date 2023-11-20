@@ -11,11 +11,6 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    
-    env:
-      EMAIL_SENDER_NAME: ${{ secrets.EMAIL_SENDER_NAME }}
-      EMAIL_SENDER_ADDRESS: ${{ secrets.EMAIL_SENDER_ADDRESS }}
-      EMAIL_SENDER_PASSWORD: ${{ secrets.EMAIL_SENDER_PASSWORD }}
 
     services:
       postgres:
