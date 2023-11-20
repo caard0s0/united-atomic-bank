@@ -12,10 +12,6 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     
-    env:
-      EMAIL_SENDER_ADDRESS: ${{ secrets.EMAIL_SENDER_ADDRESS }}
-      EMAIL_SENDER_PASSWORD: ${{ secrets.EMAIL_SENDER_PASSWORD }}
-
     services:
       postgres:
         image: postgres:15.4-alpine
@@ -55,8 +51,8 @@ jobs:
           ACCESS_TOKEN_DURATION=15m
 
           EMAIL_SENDER_NAME: ${{ secrets.EMAIL_SENDER_NAME }}
-          EMAIL_SENDER_ADDRESS=
-          EMAIL_SENDER_PASSWORD=
+          EMAIL_SENDER_ADDRESS: ${{ secrets.EMAIL_SENDER_ADDRESS }}
+          EMAIL_SENDER_PASSWORD: ${{ secrets.EMAIL_SENDER_PASSWORD }}
         EOF
 
     - name: Install golang-migrate
