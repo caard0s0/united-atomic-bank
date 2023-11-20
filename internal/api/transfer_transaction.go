@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
+	"github.com/caard0s0/united-atomic-bank-server/internal/mail"
 	"github.com/caard0s0/united-atomic-bank-server/internal/token"
 
 	"github.com/gin-gonic/gin"
@@ -71,6 +72,9 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusCreated, result)
+
+	userEmail := server.getUserEmail(ctx, result.FromAccount.Owner)
+	mail.SendTransferMail(result.Transfer.FromAccountOwner, result.Transfer.ToAccountOwner, result.Transfer.Amount, userEmail.Email, result.FromAccount.Currency)
 }
 
 func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) (db.Account, bool) {
@@ -91,6 +95,20 @@ func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency s
 	}
 
 	return account, true
+}
+
+func (server *Server) getUserEmail(ctx *gin.Context, username string) db.User {
+	user, err := server.store.GetUser(ctx, username)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return user
+		}
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return user
+	}
+
+	return user
 }
 
 type listTransferRequest struct {
