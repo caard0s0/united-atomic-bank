@@ -55,9 +55,9 @@ jobs:
           TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
           ACCESS_TOKEN_DURATION=15m
 
-          EMAIL_SENDER_NAME=UAB
+          EMAIL_SENDER_NAME=
           EMAIL_SENDER_ADDRESS=
-          EMAIL_SENDER_PASSWORD=hytdywuoxsfqfvcn
+          EMAIL_SENDER_PASSWORD=
         EOF
 
     - name: Install golang-migrate
