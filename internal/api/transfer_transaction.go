@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank-server/internal/mail"
+	"github.com/caard0s0/united-atomic-bank-server/internal/email"
 	"github.com/caard0s0/united-atomic-bank-server/internal/token"
 
 	"github.com/gin-gonic/gin"
@@ -73,8 +73,8 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusCreated, result)
 
-	userEmail := server.getUserEmail(ctx, req.FromAccountOwner)
-	mail.SendTransferMail(result.Transfer.FromAccountOwner, result.Transfer.ToAccountOwner, result.Transfer.Amount, userEmail.Email, result.FromAccount.Currency)
+	user := server.getUserEmail(ctx, req.FromAccountOwner)
+	email.SendTransferEmail(result, user.Email)
 }
 
 func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) (db.Account, bool) {

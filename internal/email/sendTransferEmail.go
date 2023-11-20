@@ -1,24 +1,30 @@
-package mail
+package email
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
-	"testing"
+	"log"
+	"strconv"
 	"time"
 
 	"github.com/caard0s0/united-atomic-bank-server/configs"
+	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
 	"github.com/caard0s0/united-atomic-bank-server/internal/util"
-	"github.com/stretchr/testify/require"
 )
 
-func TestSendEmailWithGmail(t *testing.T) {
+func SendTransferEmail(result db.TransferTransactionResult, email string) error {
 	config, err := configs.LoadConfig("../..")
-	require.NoError(t, err)
+	if err != nil {
+		log.Fatal("cannot read config:", err)
+	}
+
+	amountToString := strconv.Itoa(int(result.Transfer.Amount))
 
 	formattedDate := util.FormatDate(time.Now())
-	formattedCurrency := util.FormatCurrency("10", "BRL")
+	formattedCurrency := util.FormatCurrency(amountToString, result.FromAccount.Currency)
 
-	mailTemplate := `
+	emailTemplate := `
 		<!DOCTYPE html>
 		<html>
 		</head>
@@ -46,29 +52,31 @@ func TestSendEmailWithGmail(t *testing.T) {
 		</html>
 	`
 
-	tmpl, _ := template.New("mailTemplate").Parse(mailTemplate)
+	t, _ := template.New("emailTemplate").Parse(emailTemplate)
 
 	var body bytes.Buffer
-	tmpl.Execute(&body, struct {
+	t.Execute(&body, struct {
 		FromAccountOwner string
 		ToAccountOwner   string
 		Amount           string
 		CreatedAt        string
 	}{
-		FromAccountOwner: "John Doe",
-		ToAccountOwner:   "Jane Doe",
+		FromAccountOwner: result.Transfer.FromAccountOwner,
+		ToAccountOwner:   result.Transfer.ToAccountOwner,
 		Amount:           formattedCurrency,
 		CreatedAt:        formattedDate,
 	})
 
 	sender := NewGmailSender(config.EmailSenderName, config.EmailSenderAddress, config.EmailSenderPassword)
 
-	subject := "A test email"
+	subject := "Transfer completed successfully"
 	content := body.String()
 
-	to := []string{"vinicardoso216@gmail.com"}
-	attachFiles := []string{"../../README.md"}
+	to := []string{email}
 
-	err = sender.SendEmail(subject, content, to, nil, nil, attachFiles)
-	require.NoError(t, err)
+	err = sender.SendEmail(subject, content, to, nil, nil, nil)
+	if err != nil {
+		return fmt.Errorf("failed to send email: %w", err)
+	}
+	return nil
 }

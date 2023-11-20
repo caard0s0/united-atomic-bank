@@ -1,29 +1,24 @@
-package mail
+package email
 
 import (
 	"bytes"
-	"fmt"
 	"html/template"
-	"log"
-	"strconv"
+	"testing"
 	"time"
 
 	"github.com/caard0s0/united-atomic-bank-server/configs"
 	"github.com/caard0s0/united-atomic-bank-server/internal/util"
+	"github.com/stretchr/testify/require"
 )
 
-func SendTransferMail(fromAccountOwner, toAccountOwner string, amount int64, email, currencyCode string) error {
+func TestSendEmailWithGmail(t *testing.T) {
 	config, err := configs.LoadConfig("../..")
-	if err != nil {
-		log.Fatal("cannot read config:", err)
-	}
-
-	amountToString := strconv.Itoa(int(amount))
+	require.NoError(t, err)
 
 	formattedDate := util.FormatDate(time.Now())
-	formattedCurrency := util.FormatCurrency(amountToString, currencyCode)
+	formattedCurrency := util.FormatCurrency("10", "BRL")
 
-	mailTemplate := `
+	emailTemplate := `
 		<!DOCTYPE html>
 		<html>
 		</head>
@@ -51,31 +46,29 @@ func SendTransferMail(fromAccountOwner, toAccountOwner string, amount int64, ema
 		</html>
 	`
 
-	t, _ := template.New("mailTemplate").Parse(mailTemplate)
+	tmpl, _ := template.New("emailTemplate").Parse(emailTemplate)
 
 	var body bytes.Buffer
-	t.Execute(&body, struct {
+	tmpl.Execute(&body, struct {
 		FromAccountOwner string
 		ToAccountOwner   string
 		Amount           string
 		CreatedAt        string
 	}{
-		FromAccountOwner: fromAccountOwner,
-		ToAccountOwner:   toAccountOwner,
+		FromAccountOwner: "John Doe",
+		ToAccountOwner:   "Jane Doe",
 		Amount:           formattedCurrency,
 		CreatedAt:        formattedDate,
 	})
 
 	sender := NewGmailSender(config.EmailSenderName, config.EmailSenderAddress, config.EmailSenderPassword)
 
-	subject := "Transfer completed successfully"
+	subject := "A test email"
 	content := body.String()
 
-	to := []string{email}
+	to := []string{"vinicardoso216@gmail.com"}
+	attachFiles := []string{"../../README.md"}
 
-	err = sender.SendEmail(subject, content, to, nil, nil, nil)
-	if err != nil {
-		return fmt.Errorf("failed to send email: %w", err)
-	}
-	return nil
+	err = sender.SendEmail(subject, content, to, nil, nil, attachFiles)
+	require.NoError(t, err)
 }
