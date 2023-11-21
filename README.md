@@ -89,7 +89,7 @@ A Financial Software specialized in the intermediation of money between savers a
     HTTP_CLIENT_ADDRESS=http://localhost:3000
 
     TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
-    ACCESS_TOKEN_DURATION=15m
+    ACCESS_TOKEN_DURATION=30m
     EOF
     ```
 
@@ -101,7 +101,7 @@ A Financial Software specialized in the intermediation of money between savers a
         go install github.com/golang/mock/mockgen@v1.6.0
         ```
 
-    * add a PATH to your <strong>go/bin</strong> folder in the `~/.zshrc` file or another Shell.
+    * add this PATH to your <strong>go/bin</strong> folder in the `~/.zshrc` file or another Shell.
 
         <strong>WARNING:</strong> This PATH below is just an example.
 
