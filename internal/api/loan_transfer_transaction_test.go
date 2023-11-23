@@ -11,7 +11,7 @@ import (
 
 	mockdb "github.com/caard0s0/united-atomic-bank-server/internal/database/mock"
 	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank-server/internal/token"
+	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
