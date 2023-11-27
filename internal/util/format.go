@@ -1,6 +1,7 @@
 package util
 
 import (
+	"strconv"
 	"time"
 
 	"github.com/bojanz/currency"
@@ -13,10 +14,12 @@ func FormatDate(date time.Time) string {
 	return formattedDate
 }
 
-func FormatCurrency(amountTransfer string, currencyCode string) string {
+func FormatCurrency(amountTransfer int64, currencyCode string) string {
+	amountTransferToString := strconv.Itoa(int(amountTransfer))
+
 	locale := currency.NewLocale("US")
 	formatter := currency.NewFormatter(locale)
-	amount, _ := currency.NewAmount(amountTransfer, currencyCode)
+	amount, _ := currency.NewAmount(amountTransferToString, currencyCode)
 	formattedCurrency := formatter.Format(amount)
 
 	return formattedCurrency

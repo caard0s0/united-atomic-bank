@@ -71,10 +71,10 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusCreated, result)
+	user, _ := server.getUser(ctx, req.FromAccountOwner)
+	email.SendEmailWithSuccessfulTransfer(result, user.Email)
 
-	user := server.getUserEmail(ctx, req.FromAccountOwner)
-	email.SendTransferEmail(result, user.Email)
+	ctx.JSON(http.StatusCreated, result)
 }
 
 func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency string) (db.Account, bool) {
@@ -97,18 +97,18 @@ func (server *Server) validAccount(ctx *gin.Context, accountID int64, currency s
 	return account, true
 }
 
-func (server *Server) getUserEmail(ctx *gin.Context, username string) db.User {
+func (server *Server) getUser(ctx *gin.Context, username string) (db.User, error) {
 	user, err := server.store.GetUser(ctx, username)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
-			return user
+			return user, err
 		}
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-		return user
+		return user, err
 	}
 
-	return user
+	return user, nil
 }
 
 type listTransferRequest struct {

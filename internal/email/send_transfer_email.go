@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"html/template"
 	"log"
-	"strconv"
 	"time"
 
 	"github.com/caard0s0/united-atomic-bank-server/configs"
@@ -13,16 +12,14 @@ import (
 	"github.com/caard0s0/united-atomic-bank-server/internal/util"
 )
 
-func SendTransferEmail(result db.TransferTransactionResult, email string) error {
+func SendEmailWithSuccessfulTransfer(transferResult db.TransferTransactionResult, email string) error {
 	config, err := configs.LoadConfig("../..")
 	if err != nil {
 		log.Fatal("cannot read config:", err)
 	}
 
-	amountToString := strconv.Itoa(int(result.Transfer.Amount))
-
 	formattedDate := util.FormatDate(time.Now())
-	formattedCurrency := util.FormatCurrency(amountToString, result.FromAccount.Currency)
+	formattedCurrency := util.FormatCurrency(transferResult.Transfer.Amount, transferResult.FromAccount.Currency)
 
 	emailTemplate := `
 		<!DOCTYPE html>
@@ -52,20 +49,26 @@ func SendTransferEmail(result db.TransferTransactionResult, email string) error 
 		</html>
 	`
 
-	t, _ := template.New("emailTemplate").Parse(emailTemplate)
+	tmpl, err := template.New("emailTemplate").Parse(emailTemplate)
+	if err != nil {
+		return fmt.Errorf("failed to create new template: %w", err)
+	}
 
 	var body bytes.Buffer
-	t.Execute(&body, struct {
+	err = tmpl.Execute(&body, struct {
 		FromAccountOwner string
 		ToAccountOwner   string
 		Amount           string
 		CreatedAt        string
 	}{
-		FromAccountOwner: result.Transfer.FromAccountOwner,
-		ToAccountOwner:   result.Transfer.ToAccountOwner,
+		FromAccountOwner: transferResult.Transfer.FromAccountOwner,
+		ToAccountOwner:   transferResult.Transfer.ToAccountOwner,
 		Amount:           formattedCurrency,
 		CreatedAt:        formattedDate,
 	})
+	if err != nil {
+		return fmt.Errorf("failed to execute template: %w", err)
+	}
 
 	sender := NewGmailSender(config.EmailSenderName, config.EmailSenderAddress, config.EmailSenderPassword)
 

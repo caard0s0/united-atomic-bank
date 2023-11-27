@@ -20,7 +20,7 @@ func TestSendEmailWithGmail(t *testing.T) {
 	require.NoError(t, err)
 
 	formattedDate := util.FormatDate(time.Now())
-	formattedCurrency := util.FormatCurrency("10", "BRL")
+	formattedCurrency := util.FormatCurrency(10, "BRL")
 
 	emailTemplate := `
 		<!DOCTYPE html>
@@ -50,10 +50,11 @@ func TestSendEmailWithGmail(t *testing.T) {
 		</html>
 	`
 
-	tmpl, _ := template.New("emailTemplate").Parse(emailTemplate)
+	tmpl, err := template.New("emailTemplate").Parse(emailTemplate)
+	require.NoError(t, err)
 
 	var body bytes.Buffer
-	tmpl.Execute(&body, struct {
+	err = tmpl.Execute(&body, struct {
 		FromAccountOwner string
 		ToAccountOwner   string
 		Amount           string
@@ -64,6 +65,7 @@ func TestSendEmailWithGmail(t *testing.T) {
 		Amount:           formattedCurrency,
 		CreatedAt:        formattedDate,
 	})
+	require.NoError(t, err)
 
 	sender := NewGmailSender(config.EmailSenderName, config.EmailSenderAddress, config.EmailSenderPassword)
 
