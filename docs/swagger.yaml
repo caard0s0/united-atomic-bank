@@ -90,7 +90,7 @@ definitions:
       to_account_owner:
         type: string
     type: object
-  db.TransferTransactionResult:
+  db.TransferTxResult:
     properties:
       from_account:
         $ref: '#/definitions/db.Account'
@@ -289,7 +289,7 @@ paths:
         "201":
           description: Created
           schema:
-            $ref: '#/definitions/db.TransferTransactionResult'
+            $ref: '#/definitions/db.TransferTxResult'
       security:
       - BearerAuth: []
       summary: Create a transfer

@@ -2,8 +2,7 @@ package db
 
 import "context"
 
-// TransferTransactionResult is the result of the transfer transaction
-type TransferTransactionResult struct {
+type TransferTxResult struct {
 	Transfer    Transfer `json:"transfer"`
 	FromAccount Account  `json:"from_account"`
 	ToAccount   Account  `json:"to_account"`
@@ -11,10 +10,8 @@ type TransferTransactionResult struct {
 	ToEntry     Entry    `json:"to_entry"`
 }
 
-// TransferTransaction performs a money transfer from one account to the other.
-// It creates a transfer record, add account entries, and update accounts' balance within a single database transaction
-func (store *SQLStore) TransferTransaction(ctx context.Context, arg CreateTransferParams) (TransferTransactionResult, error) {
-	var result TransferTransactionResult
+func (store *SQLStore) TransferTx(ctx context.Context, arg CreateTransferParams) (TransferTxResult, error) {
+	var result TransferTxResult
 
 	err := store.execTx(ctx, func(q *Queries) error {
 		var err error

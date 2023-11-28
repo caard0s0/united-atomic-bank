@@ -13,7 +13,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type TransferTransactionRequest struct {
+type TransferTxResult struct {
 	FromAccountID    int64  `json:"from_account_id" binding:"required,min=1"`
 	FromAccountOwner string `json:"from_account_owner" binding:"required"`
 	ToAccountID      int64  `json:"to_account_id" binding:"required,min=1"`
@@ -30,11 +30,11 @@ type TransferTransactionRequest struct {
 //	@Accept			json
 //	@Produce		json
 //	@Security		BearerAuth
-//	@Param			_	formData	api.TransferTransactionRequest	true	"_"
-//	@Success		201	{object}	db.TransferTransactionResult
+//	@Param			_	formData	api.TransferTxResult	true	"_"
+//	@Success		201	{object}	db.TransferTxResult
 //	@Router			/transfers [POST]
 func (server *Server) createTransfer(ctx *gin.Context) {
-	var req TransferTransactionRequest
+	var req TransferTxResult
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
@@ -65,7 +65,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 		Amount:           req.Amount,
 	}
 
-	result, err := server.store.TransferTransaction(ctx, arg)
+	result, err := server.store.TransferTx(ctx, arg)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return

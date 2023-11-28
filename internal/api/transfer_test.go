@@ -81,7 +81,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Eq(arg)).
+					TransferTx(gomock.Any(), gomock.Eq(arg)).
 					Times(1)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -112,7 +112,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -144,7 +144,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrNoRows)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -170,7 +170,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -196,7 +196,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -227,7 +227,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -258,7 +258,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -290,7 +290,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Return(account3, nil)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -316,7 +316,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -342,7 +342,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Times(0)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -369,7 +369,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 					Return(db.Account{}, sql.ErrConnDone)
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Any()).
+					TransferTx(gomock.Any(), gomock.Any()).
 					Times(0)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
@@ -377,7 +377,7 @@ func TestTransferMoneyAPI(t *testing.T) {
 			},
 		},
 		{
-			name: "TransferTransactionError",
+			name: "TransferTxError",
 			body: gin.H{
 				"from_account_id":    account1.ID,
 				"from_account_owner": account1.Owner,
@@ -409,9 +409,9 @@ func TestTransferMoneyAPI(t *testing.T) {
 				}
 
 				store.EXPECT().
-					TransferTransaction(gomock.Any(), gomock.Eq(arg)).
+					TransferTx(gomock.Any(), gomock.Eq(arg)).
 					Times(1).
-					Return(db.TransferTransactionResult{}, sql.ErrConnDone)
+					Return(db.TransferTxResult{}, sql.ErrConnDone)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusInternalServerError, recorder.Code)

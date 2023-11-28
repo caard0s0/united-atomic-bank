@@ -297,7 +297,7 @@ const docTemplate = `{
                     "201": {
                         "description": "Created",
                         "schema": {
-                            "$ref": "#/definitions/db.TransferTransactionResult"
+                            "$ref": "#/definitions/db.TransferTxResult"
                         }
                     }
                 }
@@ -537,7 +537,7 @@ const docTemplate = `{
                 }
             }
         },
-        "db.TransferTransactionResult": {
+        "db.TransferTxResult": {
             "type": "object",
             "properties": {
                 "from_account": {

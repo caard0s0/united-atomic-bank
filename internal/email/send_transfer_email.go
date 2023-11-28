@@ -12,7 +12,7 @@ import (
 	"github.com/caard0s0/united-atomic-bank-server/internal/util"
 )
 
-func SendEmailWithSuccessfulTransfer(transferResult db.TransferTransactionResult, email string) error {
+func SendEmailWithSuccessfulTransfer(transferResult db.TransferTxResult, email string) error {
 	config, err := configs.LoadConfig("../..")
 	if err != nil {
 		log.Fatal("cannot read config:", err)

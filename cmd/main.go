@@ -12,13 +12,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// @title						United Atomic Bank API Documentation
-// @version					    1.0.0
-// @description				    This is the United Atomic Bank API. All features available in this application are documented below.
-// @contact.email				cardoso.business.ctt@gmail.com
-// @securityDefinitions.apiKey	BearerAuth
-// @in							header
-// @name						Authorization
+//	@title						United Atomic Bank API Documentation
+//	@version					1.0.0
+//	@description				This is the United Atomic Bank API. All features available in this application are documented below.
+//	@contact.email				cardoso.business.ctt@gmail.com
+//	@securityDefinitions.apiKey	BearerAuth
+//	@in							header
+//	@name						Authorization
 func main() {
 	config, err := configs.LoadConfig(".")
 	if err != nil {

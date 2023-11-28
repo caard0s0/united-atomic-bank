@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestTransferTransaction(t *testing.T) {
+func TestTransferTx(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
@@ -20,12 +20,12 @@ func TestTransferTransaction(t *testing.T) {
 	amount := int64(10)
 
 	errs := make(chan error)
-	results := make(chan TransferTransactionResult)
+	results := make(chan TransferTxResult)
 
 	for i := 0; i < n; i++ {
 		go func() {
 			ctx := context.Background()
-			result, err := store.TransferTransaction(ctx, CreateTransferParams{
+			result, err := store.TransferTx(ctx, CreateTransferParams{
 				FromAccountID:    account1.ID,
 				FromAccountOwner: account1.Owner,
 				ToAccountID:      account2.ID,
@@ -118,14 +118,14 @@ func TestTransferTransaction(t *testing.T) {
 	require.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }
 
-func TestTransferTransactionDeadLock(t *testing.T) {
+func TestTransferTxDeadLock(t *testing.T) {
 	store := NewStore(testDB)
 
 	account1 := createRandomAccount(t)
 	account2 := createRandomAccount(t)
 	fmt.Println(">> before", account1.Balance, account2.Balance)
 
-	// run a concurrent transfer transactions
+	// run a concurrent transfer transaction
 	n := 10
 	amount := int64(10)
 
@@ -144,7 +144,7 @@ func TestTransferTransactionDeadLock(t *testing.T) {
 
 		go func() {
 			ctx := context.Background()
-			_, err := store.TransferTransaction(ctx, CreateTransferParams{
+			_, err := store.TransferTx(ctx, CreateTransferParams{
 				FromAccountID:    fromAccountID,
 				FromAccountOwner: FromAccountOwner,
 				ToAccountID:      toAccountID,
