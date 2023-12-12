@@ -6,6 +6,7 @@ import (
 	"github.com/caard0s0/united-atomic-bank-server/configs"
 	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
 	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -49,6 +50,7 @@ func (server *Server) setupRouter() {
 	router.Use(CORSMiddleware(server.config.HttpClientAddress))
 
 	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	router.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	router.POST("/users", server.createUser)
 	router.POST("/users/login", server.loginUser)

@@ -1,0 +1,17 @@
+{
+	"ulid": "01HHF1Q07QSZFQR64C32K2ES80",
+	"minTime": 1702324801421,
+	"maxTime": 1702332000000,
+	"stats": {
+		"numSamples": 267037,
+		"numSeries": 789,
+		"numChunks": 2531
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HHF1Q07QSZFQR64C32K2ES80"
+		]
+	},
+	"version": 1
+}

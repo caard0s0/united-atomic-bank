@@ -1,0 +1,17 @@
+{
+	"ulid": "01HHCEGGXERN99CABAFC8PKF27",
+	"minTime": 1701527305321,
+	"maxTime": 1701532800000,
+	"stats": {
+		"numSamples": 95789,
+		"numSeries": 824,
+		"numChunks": 830
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HHCEGGXERN99CABAFC8PKF27"
+		]
+	},
+	"version": 1
+}

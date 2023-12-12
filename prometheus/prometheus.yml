@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+- job_name: prometheus
+  scheme: http
+  metrics_path: /metrics
+  static_configs:
+  - targets:
+    - localhost:9090
+- job_name: uab
+  scheme: http
+  metrics_path: /metrics
+  follow_redirects: true
+  static_configs:
+  - targets: 
+    - api:8080

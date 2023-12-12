@@ -1,5 +1,22 @@
 version: "3.8"
 services:
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/data:/prometheus
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    volumes:
+      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources.yaml
+      - ./grafana/data:/var/lib/grafana
   postgres:
     image: postgres:15.4-alpine
     environment:
