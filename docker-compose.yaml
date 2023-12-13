@@ -5,8 +5,8 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./prometheus/data:/prometheus
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./configs/prometheus/data:/prometheus
   node-exporter:
     image: prom/node-exporter:latest
     ports:
@@ -14,7 +14,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -32,8 +32,8 @@ services:
     depends_on:
       - prometheus
     volumes:
-      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources.yaml
-      - ./grafana/data:/var/lib/grafana
+      - ./configs/grafana/datasources.yaml:/etc/grafana/provisioning/datasources.yaml
+      - ./configs/grafana/data:/var/lib/grafana
   postgres:
     image: postgres:15.4-alpine
     environment:
