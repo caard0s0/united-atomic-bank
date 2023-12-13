@@ -58,6 +58,7 @@ func (server *Server) createAccount(ctx *gin.Context) {
 		return
 	}
 
+	successfulCreatedAccounts.WithLabelValues("/accounts", "POST", "201").Inc()
 	ctx.JSON(http.StatusCreated, account)
 }
 

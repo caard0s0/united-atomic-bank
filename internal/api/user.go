@@ -143,5 +143,7 @@ func (server *Server) loginUser(ctx *gin.Context) {
 		AccessToken: accessToken,
 		User:        newUserResponse(user),
 	}
+
+	successfulLogins.WithLabelValues("/users/login", "POST", "200").Inc()
 	ctx.JSON(http.StatusOK, rsp)
 }

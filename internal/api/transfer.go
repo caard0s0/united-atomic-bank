@@ -74,6 +74,7 @@ func (server *Server) createTransfer(ctx *gin.Context) {
 	user, _ := server.getUser(ctx, req.FromAccountOwner)
 	email.SendEmailWithSuccessfulTransfer(result, user.Email)
 
+	successfulTransfers.WithLabelValues("/transfers", "POST", "201").Inc()
 	ctx.JSON(http.StatusCreated, result)
 }
 
