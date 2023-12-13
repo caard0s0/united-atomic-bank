@@ -1,0 +1,17 @@
+{
+	"ulid": "01HHHMNPAR2NY648MK58CYTXGM",
+	"minTime": 1702406713176,
+	"maxTime": 1702411200000,
+	"stats": {
+		"numSamples": 2324076,
+		"numSeries": 3440,
+		"numChunks": 17772
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HHHMNPAR2NY648MK58CYTXGM"
+		]
+	},
+	"version": 1
+}

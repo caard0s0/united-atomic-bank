@@ -1,0 +1,17 @@
+{
+	"ulid": "01HHHMNPSPBEPYS53BN56CSA6G",
+	"minTime": 1702411441211,
+	"maxTime": 1702418400000,
+	"stats": {
+		"numSamples": 1174076,
+		"numSeries": 4026,
+		"numChunks": 14786
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HHHMNPSPBEPYS53BN56CSA6G"
+		]
+	},
+	"version": 1
+}

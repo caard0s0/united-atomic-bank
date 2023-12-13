@@ -16,6 +16,6 @@ COPY scripts/start.sh .
 COPY scripts/wait-for.sh .
 COPY internal/database/migrations ./migrations
 
-EXPOSE 8080
+EXPOSE 80
 CMD [ "/app/main" ]
 ENTRYPOINT [ "/app/start.sh" ]
