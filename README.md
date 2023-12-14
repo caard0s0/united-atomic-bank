@@ -86,7 +86,7 @@ A Financial Software specialized in the intermediation of money between savers a
     cat > app.env << EOF
     DB_DRIVER=postgres
     DB_SOURCE=postgresql://root:secret@postgres:5432/bank?sslmode=disable
-    HTTP_SERVER_ADDRESS=0.0.0.0:8080
+    HTTP_SERVER_ADDRESS=0.0.0.0:80
     HTTP_CLIENT_ADDRESS=http://localhost:3000
 
     TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
@@ -111,7 +111,7 @@ A Financial Software specialized in the intermediation of money between savers a
         <strong>WARNING:</strong> This PATH below is just an example.
 
         ```bash
-        export PATH=$PATH:~/.asdf/installs/golang/1.21.1/packages/bin
+        export PATH=$PATH:~/.asdf/installs/golang/1.21.5/packages/bin
         ```
 
 5. Install <strong>SQLC</strong>. for more information visit <a href="https://docs.sqlc.dev/en/latest/index.html">SQLC Documentation</a>.

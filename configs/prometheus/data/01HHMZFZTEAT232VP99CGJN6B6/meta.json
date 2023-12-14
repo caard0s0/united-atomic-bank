@@ -1,0 +1,17 @@
+{
+	"ulid": "01HHMZFZTEAT232VP99CGJN6B6",
+	"minTime": 1702561037128,
+	"maxTime": 1702562400000,
+	"stats": {
+		"numSamples": 68328,
+		"numSeries": 4264,
+		"numChunks": 4264
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HHMZFZTEAT232VP99CGJN6B6"
+		]
+	},
+	"version": 1
+}
