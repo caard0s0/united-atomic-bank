@@ -48,10 +48,10 @@ A Financial Software specialized in the intermediation of money between savers a
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="#tests">Tests</a></li>
-                <li><a href="#grafana-dashboard">Grafana Dashboard</a></li>
-                <li><a href="#api-documentation">API Documentation</a></li>
             </ul>
         </li>
+        <li><a href="#grafana-dashboard">Grafana Dashboard</a></li>
+        <li><a href="#api-documentation">API Documentation</a></li>
         <li><a href="#license">License</a></li>
         <li><a href="#contact">Contact</a></li>
     </ol>
