@@ -35,7 +35,7 @@ A Financial Software specialized in the intermediation of money between savers a
 
 <h3>Built With</h3>
 
-[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,aws,kubernetes,githubactions,postman)](https://skillicons.dev)
+[![Tech Tools](https://skillicons.dev/icons?i=go,postgres,docker,aws,kubernetes,githubactions,postman,grafana,prometheus)](https://skillicons.dev)
 
 
 <!-- Table of Contents -->
@@ -48,6 +48,7 @@ A Financial Software specialized in the intermediation of money between savers a
                 <li><a href="#installation">Installation</a></li>
                 <li><a href="#usage">Usage</a></li>
                 <li><a href="#tests">Tests</a></li>
+                <li><a href="#grafana-dashboard">Grafana Dashboard</a></li>
                 <li><a href="#api-documentation">API Documentation</a></li>
             </ul>
         </li>
@@ -90,6 +91,10 @@ A Financial Software specialized in the intermediation of money between savers a
 
     TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012
     ACCESS_TOKEN_DURATION=30m
+
+    EMAIL_SENDER_NAME=
+    EMAIL_SENDER_ADDRESS=
+    EMAIL_SENDER_PASSWORD=
     EOF
     ```
 
@@ -138,6 +143,14 @@ A Financial Software specialized in the intermediation of money between savers a
     ```cmd
     go test -v -cover ./...
     ```
+
+
+<br>
+
+<!-- Grafana Dashboard -->
+<h2 id="grafana-dashboard">Grafana Dashboard</h2>
+
+<p>A dashboard created with Grafana to view all the main information about <strong>Docker Containers</strong> and <strong>Requests</strong>.</p>
 
 
 <br>
