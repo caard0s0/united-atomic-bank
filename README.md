@@ -152,6 +152,9 @@ A Financial Software specialized in the intermediation of money between savers a
 
 <p>A dashboard created with Grafana to view all the main information about <strong>Docker Containers</strong> and <strong>Requests</strong>.</p>
 
+![docker_dashboard](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/77bb2774-20ff-4d0e-b652-2d9b72be5618)
+&nbsp;
+![api_dashboard](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/3b175f88-7661-4a61-a00a-95677563ca0b)
 
 <br>
 
