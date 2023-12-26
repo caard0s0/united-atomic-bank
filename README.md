@@ -29,7 +29,15 @@
 
 ![db_diagram](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/c9d6c5fe-f96b-4053-bbd7-b2297caf994b)
 
-A Financial Software specialized in the intermediation of money between savers and those in need of loans, as well as in the custody of that money. It was created following SOLID principles, for better scalability and code maintenance. In addition, thinking about a reliable and well-tested application, with Unit and Automated Tests using Mock DB, the tests apply the concept of DB Stubs. Deploying it using Amazon's Cloud services.
+This API was written following SOLID principles and Clean Code guidelines, for better scalability and code maintenance.
+
+Using PostgreSQL as a database ensures durability and consistency in financial records.
+
+The application was deployed on AWS, efficiently orchestrated by Kubernetes. This choice allows for dynamic scalability and simplified container management.
+
+The implementation of automated tests, integrated into the continuous integration (CI) process, ensures code stability at all phases of development.
+ 
+Additionally, monitoring is a priority. Prometheus and Grafana work together to provide detailed insights into application performance. This proactive approach, through metrics and dashboards, allows a quick response to any anomaly, maintaining system reliability and availability.
 
 &nbsp;
 
@@ -63,7 +71,7 @@ A Financial Software specialized in the intermediation of money between savers a
 <!-- Getting Started -->
 <h2 id="getting-started">Getting Started</h2>
 
-<p>To get started, You need to have <strong>Go 1.21+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://docs.docker.com/engine/install/">Docker Engine Install</a>.</p>
+<p>To get started, You need to have <strong>Go 1.21+</strong> installed on your machine, for more information visit <a href="https://go.dev/dl/">Go Downloads</a>. You also need to have <strong>Docker Desktop</strong> installed, for more information visit <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop Install</a>.</p>
 
 <p><strong>OBS:</strong> This guide is designed to run this project locally (Local Development), on Linux-based systems.</p>
 
