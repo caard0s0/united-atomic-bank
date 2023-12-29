@@ -29,6 +29,8 @@
 
 ![db_diagram](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/c9d6c5fe-f96b-4053-bbd7-b2297caf994b)
 
+A Financial Software specialized in the intermediation of money between savers and those in need of loans, as well as in the custody of that money.
+
 This API was written following SOLID principles and Clean Code guidelines, for better scalability and code maintenance.
 
 Using PostgreSQL as a database ensures durability and consistency in financial records.
