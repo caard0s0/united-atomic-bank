@@ -2,13 +2,13 @@
 
 
 <!-- CI Badge -->
-<a href="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/ci.yml">
-    <img src="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
+<a href="https://github.com/caard0s0/vanguard-server/actions/workflows/ci.yml">
+    <img src="https://github.com/caard0s0/vanguard-server/actions/workflows/ci.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
 <!-- Build & Publish Docker Badge -->
-<a href="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/deploy.yml">
-    <img src="https://github.com/caard0s0/united-atomic-bank-server/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Build Status">
+<a href="https://github.com/caard0s0/vanguard-server/actions/workflows/deploy.yml">
+    <img src="https://github.com/caard0s0/vanguard-server/actions/workflows/deploy.yml/badge.svg?branch=main" alt="Build Status">
 </a>
 
 &nbsp;
@@ -16,13 +16,13 @@
 
 <!-- About the Project -->
 <div align="center">
-    <h2>UAB - API Server</h2>
+    <h2>Vanguard - API Server</h2>
     <p>A complete RESTful API for Financial Institutions, developed with <a href="https://go.dev/">Go</a>.</p>
-    <a href="https://github.com/caard0s0/united-atomic-bank-server/issues">Report Bugs</a>
+    <a href="https://github.com/caard0s0/vanguard-server/issues">Report Bugs</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/united-atomic-bank-server/actions">Actions</a>
+    <a href="https://github.com/caard0s0/vanguard-server/actions">Actions</a>
     &nbsp;&bull;&nbsp;
-    <a href="https://github.com/caard0s0/united-atomic-bank-server/pulls">Pull Requests</a>
+    <a href="https://github.com/caard0s0/vanguard-server/pulls">Pull Requests</a>
 </div>
 
 &nbsp;
@@ -83,7 +83,7 @@ Additionally, monitoring is a priority. Prometheus and Grafana work together to 
 
 1. Clone the repository.
     ```bash
-    git clone https://github.com/caard0s0/united-atomic-bank-server.git
+    git clone https://github.com/caard0s0/vanguard-server.git
     ```
 
 2. Install <strong>Golang-Migrate</strong> as CLI. for more information visit <a href="https://github.com/golang-migrate/migrate/tree/master/cmd/migrate">Golang CLI Documentation</a>.
@@ -128,7 +128,7 @@ Additionally, monitoring is a priority. Prometheus and Grafana work together to 
 
 <strong>WARNING:</strong> To install and use the <strong>Full Application</strong>, click on the <strong>Link</strong> below.
 
-6. Install the <strong>Client Side</strong>. for more information visit <a href="https://github.com/caard0s0/united-atomic-bank-client">UAB - Web Version</a>.
+6. Install the <strong>Client Side</strong>. for more information visit <a href="https://github.com/caard0s0/vanguard-client">Vanguard - Web Version</a>.
 
 
 <!-- Usage -->
