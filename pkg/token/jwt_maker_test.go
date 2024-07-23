@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/caard0s0/united-atomic-bank-server/internal/util"
+	"github.com/caard0s0/vanguard-server/internal/util"
 	"github.com/golang-jwt/jwt/v4"
 	"github.com/stretchr/testify/require"
 )

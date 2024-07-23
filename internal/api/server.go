@@ -3,9 +3,9 @@ package api
 import (
 	"fmt"
 
-	"github.com/caard0s0/united-atomic-bank-server/configs"
-	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
+	"github.com/caard0s0/vanguard-server/configs"
+	db "github.com/caard0s0/vanguard-server/internal/database/sqlc"
+	"github.com/caard0s0/vanguard-server/pkg/token"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/gin-gonic/gin"

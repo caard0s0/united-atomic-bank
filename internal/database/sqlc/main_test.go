@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/caard0s0/united-atomic-bank-server/configs"
+	"github.com/caard0s0/vanguard-server/configs"
 
 	_ "github.com/lib/pq"
 )

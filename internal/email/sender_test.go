@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/caard0s0/united-atomic-bank-server/configs"
-	"github.com/caard0s0/united-atomic-bank-server/internal/util"
+	"github.com/caard0s0/vanguard-server/configs"
+	"github.com/caard0s0/vanguard-server/internal/util"
 	"github.com/stretchr/testify/require"
 )
 
@@ -29,7 +29,7 @@ func TestSendEmailWithGmail(t *testing.T) {
 			<body style="background-color: #E5E5E5; margin: 0; padding: 0;">
 				<div style="max-width: 600px; margin: 0 auto; padding-bottom: 2rem; background-color: #fff;">
 					<div style="background: linear-gradient(215deg, #171d26 15%, #000 85%);">
-						<img style="width: 8rem; height: 8rem;" src="https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/d2d8a5e9-8ba3-48e6-95d6-30d31bb0618e" alt="United Atomic Bank Logo" title="United Atomic Bank Logo">
+						<img style="width: 8rem; height: 8rem;" src="https://github.com/caard0s0/vanguard-server/assets/95318788/d2d8a5e9-8ba3-48e6-95d6-30d31bb0618e" alt="United Atomic Bank Logo" title="United Atomic Bank Logo">
 						<h1 style="color: #fff; padding-bottom: 2rem; margin-left: 2rem; margin-right: 2rem; text-align: left; font-size: 2rem;">Transfer Made</h1>
 					</div>
 					<div>

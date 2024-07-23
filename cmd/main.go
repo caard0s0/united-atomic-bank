@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/caard0s0/united-atomic-bank-server/configs"
-	_ "github.com/caard0s0/united-atomic-bank-server/docs"
-	"github.com/caard0s0/united-atomic-bank-server/internal/api"
-	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
+	"github.com/caard0s0/vanguard-server/configs"
+	_ "github.com/caard0s0/vanguard-server/docs"
+	"github.com/caard0s0/vanguard-server/internal/api"
+	db "github.com/caard0s0/vanguard-server/internal/database/sqlc"
 	_ "github.com/lib/pq"
 )
 

@@ -5,8 +5,8 @@ import (
 	"errors"
 	"net/http"
 
-	db "github.com/caard0s0/united-atomic-bank-server/internal/database/sqlc"
-	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
+	db "github.com/caard0s0/vanguard-server/internal/database/sqlc"
+	"github.com/caard0s0/vanguard-server/pkg/token"
 	"github.com/lib/pq"
 
 	"github.com/gin-gonic/gin"

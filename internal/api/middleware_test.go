@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
+	"github.com/caard0s0/vanguard-server/pkg/token"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"

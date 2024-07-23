@@ -35,7 +35,7 @@ services:
       - ./configs/grafana/datasources.yaml:/etc/grafana/provisioning/datasources.yaml
       - ./configs/grafana/data:/var/lib/grafana
   postgres:
-    image: postgres:16.2-alpine
+    image: postgres:16.3-alpine
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret

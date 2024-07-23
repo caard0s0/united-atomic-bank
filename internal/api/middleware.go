@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/caard0s0/united-atomic-bank-server/pkg/token"
+	"github.com/caard0s0/vanguard-server/pkg/token"
 
 	"github.com/gin-gonic/gin"
 )
