@@ -12,7 +12,7 @@ func SetCookie(ctx *gin.Context, accessToken string) {
 		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "localhost", false, true)
 	}
 
-	if httpClientAddress == "https://app.unitedatomicbank.com" {
-		ctx.SetCookie("accessToken", accessToken, 60*30, "/", ".unitedatomicbank.com", true, true)
+	if httpClientAddress == "https://uab-api.onrender.com" {
+		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "uab-api.onrender.com", true, true)
 	}
 }
