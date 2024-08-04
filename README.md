@@ -27,7 +27,7 @@
 
 &nbsp;
 
-![db_diagram](https://github.com/caard0s0/united-atomic-bank-server/assets/95318788/c9d6c5fe-f96b-4053-bbd7-b2297caf994b)
+![bank](https://github.com/user-attachments/assets/69e542a3-1b9f-4479-81ea-cea3fa5eb6ed)
 
 A Financial Software specialized in the intermediation of money between savers and those in need of loans, as well as in the custody of that money.
 
