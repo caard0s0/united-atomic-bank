@@ -11,9 +11,9 @@ import (
 	_ "github.com/lib/pq"
 )
 
-// @title						United Atomic Bank API Documentation
+// @title						Vanguard API Documentation
 // @version					1.0.0
-// @description				This is the United Atomic Bank API. All features available in this application are documented below.
+// @description				This is the Vanguard API. All features available in this application are documented below.
 // @contact.email				cardoso.business.ctt@gmail.com
 // @securityDefinitions.apiKey	BearerAuth
 // @in							header

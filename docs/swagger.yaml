@@ -44,34 +44,6 @@ definitions:
       id:
         type: integer
     type: object
-  db.LoanTransfer:
-    properties:
-      account_id:
-        type: integer
-      amount:
-        description: must be positive
-        type: integer
-      end_at:
-        type: string
-      id:
-        type: integer
-      interest_rate:
-        description: must be positive
-        type: string
-      open:
-        type: boolean
-      start_at:
-        type: string
-    type: object
-  db.LoanTransferTransactionResult:
-    properties:
-      loan:
-        $ref: '#/definitions/db.LoanTransfer'
-      to_account:
-        $ref: '#/definitions/db.Account'
-      to_entry:
-        $ref: '#/definitions/db.Entry'
-    type: object
   db.Transfer:
     properties:
       amount:
@@ -106,9 +78,9 @@ definitions:
 info:
   contact:
     email: cardoso.business.ctt@gmail.com
-  description: This is the United Atomic Bank API. All features available in this
-    application are documented below.
-  title: United Atomic Bank API Documentation
+  description: This is the Vanguard API. All features available in this application
+    are documented below.
+  title: Vanguard API Documentation
   version: 1.0.0
 paths:
   /accounts:
@@ -192,33 +164,6 @@ paths:
       summary: Get an account
       tags:
       - accounts
-  /loans:
-    post:
-      consumes:
-      - application/json
-      description: Create a loan.
-      parameters:
-      - in: formData
-        minimum: 1
-        name: account_id
-        required: true
-        type: integer
-      - in: formData
-        name: amount
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "201":
-          description: Created
-          schema:
-            $ref: '#/definitions/db.LoanTransferTransactionResult'
-      security:
-      - BearerAuth: []
-      summary: Create a loan
-      tags:
-      - loans
   /transfers:
     get:
       consumes:

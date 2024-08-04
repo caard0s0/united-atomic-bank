@@ -8,7 +8,6 @@ import (
 type Store interface {
 	Querier
 	TransferTx(ctx context.Context, arg CreateTransferParams) (TransferTxResult, error)
-	LoanTransferTransaction(ctx context.Context, arg CreateLoanTransferParams) (LoanTransferTransactionResult, error)
 }
 
 type SQLStore struct {

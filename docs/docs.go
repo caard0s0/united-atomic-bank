@@ -144,49 +144,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/loans": {
-            "post": {
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
-                "description": "Create a loan.",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "loans"
-                ],
-                "summary": "Create a loan",
-                "parameters": [
-                    {
-                        "minimum": 1,
-                        "type": "integer",
-                        "name": "account_id",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "name": "amount",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "$ref": "#/definitions/db.LoanTransferTransactionResult"
-                        }
-                    }
-                }
-            }
-        },
         "/transfers": {
             "get": {
                 "security": [
@@ -468,48 +425,6 @@ const docTemplate = `{
                 }
             }
         },
-        "db.LoanTransfer": {
-            "type": "object",
-            "properties": {
-                "account_id": {
-                    "type": "integer"
-                },
-                "amount": {
-                    "description": "must be positive",
-                    "type": "integer"
-                },
-                "end_at": {
-                    "type": "string"
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "interest_rate": {
-                    "description": "must be positive",
-                    "type": "string"
-                },
-                "open": {
-                    "type": "boolean"
-                },
-                "start_at": {
-                    "type": "string"
-                }
-            }
-        },
-        "db.LoanTransferTransactionResult": {
-            "type": "object",
-            "properties": {
-                "loan": {
-                    "$ref": "#/definitions/db.LoanTransfer"
-                },
-                "to_account": {
-                    "$ref": "#/definitions/db.Account"
-                },
-                "to_entry": {
-                    "$ref": "#/definitions/db.Entry"
-                }
-            }
-        },
         "db.Transfer": {
             "type": "object",
             "properties": {
@@ -573,8 +488,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "",
 	Schemes:          []string{},
-	Title:            "United Atomic Bank API Documentation",
-	Description:      "This is the United Atomic Bank API. All features available in this application are documented below.",
+	Title:            "Vanguard API Documentation",
+	Description:      "This is the Vanguard API. All features available in this application are documented below.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

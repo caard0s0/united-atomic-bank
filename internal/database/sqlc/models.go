@@ -24,18 +24,6 @@ type Entry struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-type LoanTransfer struct {
-	ID        int64 `json:"id"`
-	AccountID int64 `json:"account_id"`
-	// must be positive
-	Amount int64 `json:"amount"`
-	// must be positive
-	InterestRate string    `json:"interest_rate"`
-	Open         bool      `json:"open"`
-	StartAt      time.Time `json:"start_at"`
-	EndAt        time.Time `json:"end_at"`
-}
-
 type Transfer struct {
 	ID               int64  `json:"id"`
 	FromAccountID    int64  `json:"from_account_id"`
