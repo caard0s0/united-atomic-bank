@@ -12,7 +12,7 @@ func SetCookie(ctx *gin.Context, accessToken string) {
 		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "localhost", false, true)
 	}
 
-	if httpClientAddress == "https://uab-api.onrender.com" {
-		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "uab-api.onrender.com", true, true)
+	if httpClientAddress == "https://vanguard-client.vercel.app" {
+		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "vanguard-client.vercel.app", true, true)
 	}
 }
