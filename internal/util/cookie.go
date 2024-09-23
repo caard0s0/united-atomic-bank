@@ -13,6 +13,6 @@ func SetCookie(ctx *gin.Context, accessToken string) {
 	}
 
 	if httpClientAddress == "https://vanguard-client.vercel.app" {
-		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "vanguard-client.vercel.app", true, true)
+		ctx.SetCookie("accessToken", accessToken, 60*30, "/", "", true, true)
 	}
 }
